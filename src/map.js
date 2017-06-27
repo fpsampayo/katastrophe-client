@@ -10,10 +10,11 @@ export default class Map {
                  center: [42.284829, -8.553642],
                  zoomControl: true,
                  attributionControl: true,
-                 maxZoom: 19
+                 maxZoom: 20
     })
 
     const pnoa = L.tileLayer.wms('http://www.ign.es/wms-inspire/pnoa-ma?', {
+      maxZoom: 20,
       layers: 'OI.OrthoimageCoverage',
       format: 'image/png',
       attribution: 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>'
@@ -21,17 +22,27 @@ export default class Map {
     
     const catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?'
 
-    const catastro = L.nonTiledLayer.wms(catastroUrl, {
+    const catastroBase = L.nonTiledLayer.wms(catastroUrl, {
+      maxZoom: 20,
       layers: 'Catastro',
       format: 'image/png',
       transparent: false,
       attribution: 'Dirección General del Catastro'
+    })
+
+    const catastroOverlay = L.nonTiledLayer.wms(catastroUrl, {
+      maxZoom: 20,
+      layers: 'Catastro',
+      format: 'image/png',
+      transparent: true,
+      attribution: 'Dirección General del Catastro'
     }).addTo(this.map)
+
 
 
     const baseMaps = {
       PNOA: pnoa,
-      Catastro: catastro
+      Catastro: catastroBase
     }
 
     L.control.layers(baseMaps).addTo(this.map)
