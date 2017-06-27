@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.js -d --inline --host 10.0.0.239 --port 2222"
+    "start": "webpack-dev-server --config webpack.config.js -d --inline --port 2222"
   },
   "keywords": [],
   "author": "",
