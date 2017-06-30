@@ -68,7 +68,6 @@ export default class CatastroParser {
           "coordinates": coordinates
           }
         }
-        console.log(geojsonFeature)
         resolve( geojsonFeature )  
       })
     })
