@@ -2,40 +2,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Leaflet</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcUY5M6mGzrzGSRnEGBjnH_n_EUZ6Fimc" async defer></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CatastroVisor</title>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcUY5M6mGzrzGSRnEGBjnH_n_EUZ6Fimc" async defer></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login_refcat_form" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-        <a class="navbar-brand" href="#">Webpack-Leaflet</a>
-      </div>
-      <div class="collapse navbar-collapse" id="login_refcat_form">
-        <form class="navbar-form navbar-right" id="navRefCatForm" >
-          <div class="nav input-group">
-            <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" id="btn-search">Buscar</button>
-            </span>
-          </div>
-        </form>
-      </div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login_refcat_form" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Webpack-Leaflet</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="menu-toggle"><i class="fa fa-question-circle white"></i>Menu</a></li>
+            </ul>
+            <div class="collapse navbar-collapse" id="login_refcat_form">
+                <form class="navbar-form navbar-right" id="navRefCatForm">
+                    <div class="nav input-group">
+                        <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
+                        <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="btn-search">Buscar</button>
+                </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div id="map-wrapper">
+                <div id="map"></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
-  </nav>
-  <div id="map-wrapper">
-    <div id="map"></div>
-  </div>
-  <script src="./js/main.js"></script>
+
+    <script src="./js/main.js"></script>
+
 </body>
 
 </html>

@@ -3,6 +3,7 @@ import 'bootstrap'
 import Map from './map'
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/styles.css'
+import './styles/simple-sidebar.css'
 import CatastroParser from './catastroParser'
 
 
@@ -13,6 +14,7 @@ if (module.hot) {
 const map = new Map()
 const catastroParser = new CatastroParser()
 const btnSearch = document.getElementById('btn-search')
+const btnSidebar = document.getElementById('menu-toggle')
 
 
 btnSearch.addEventListener('click', (evt) => {
@@ -26,6 +28,12 @@ btnSearch.addEventListener('click', (evt) => {
   catastroParser.getParcel(refCat).then((geoJson) => {
     map.loadGeoJson(geoJson)
   })
-
 })
+
+btnSidebar.addEventListener('click', (evt) => {
+  evt.preventDefault()
+  $("#wrapper").toggleClass("toggled")
+})
+
+
 
