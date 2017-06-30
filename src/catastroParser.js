@@ -13,6 +13,8 @@ export default class CatastroParser {
         var Exterior = PolygonPatch.getElementsByTagName("exterior")
         var interior = PolygonPatch.getElementsByTagName("interior")
 
+        var coordinates = []
+
         for (var ext of Exterior){
           var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
           var i = 0
@@ -21,8 +23,20 @@ export default class CatastroParser {
             points.push([array[i + 1], array[i]])
             i = i + 2
           }
-          var coordinates = [points] 
+          coordinates.push([points])
         }
+
+        for (var ext of interior){
+          var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
+          var i = 0
+          var points = []
+          for (var a of Array(array.length / 2)){
+            points.push([array[i + 1], array[i]])
+            i = i + 2
+          }
+          coordinates.push([points])
+        }
+
         var geojsonFeature = {
           "type": "Feature",
           "properties": {
@@ -31,7 +45,7 @@ export default class CatastroParser {
             "popupContent": "This is where the Rockies play!"
           },
           "geometry": {
-          "type": "Polygon",
+          "type": "MultiPolygon",
           "coordinates": coordinates
           }
         }
