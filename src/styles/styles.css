@@ -13,3 +13,19 @@ html, body, #map {
     height: 100%;
     width: 100%;
 }
+
+nav {
+    margin-bottom: 0!important;
+}
+
+.modal-content {
+    border-radius: 0!important;
+}
+
+.modal-header {
+    border-bottom: 0!important;
+}
+
+.modal-footer {
+    border-top: 0!important;
+}
