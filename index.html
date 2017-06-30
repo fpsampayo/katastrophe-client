@@ -1,11 +1,41 @@
-<html>
-  <head>
-    <title>Getting Started</title>
-  </head>
-  <body>
-    <div id="map-wrapper">
-      <div id="map"></div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webpack Leaflet</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcUY5M6mGzrzGSRnEGBjnH_n_EUZ6Fimc" async defer></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login_refcat_form" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+        <a class="navbar-brand" href="#">Webpack-Leaflet</a>
+      </div>
+      <div class="collapse navbar-collapse" id="login_refcat_form">
+        <form class="navbar-form navbar-right" id="navRefCatForm" >
+          <div class="nav input-group">
+            <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="btn-search">Buscar</button>
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
-    <script src="bundle.js"></script>
-  </body>
+  </nav>
+  <div id="map-wrapper">
+    <div id="map"></div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+
 </html>
