@@ -9,9 +9,16 @@ export default class CatastroParser {
     return new Promise((resolve, reject) => {
 
       $.get(this.catParcelUrl + refcat, function(xmlDoc, status){
+        /* Geometries */
         var PolygonPatch = xmlDoc.getElementsByTagName("PolygonPatch")[0]
         var Exterior = PolygonPatch.getElementsByTagName("exterior")
         var interior = PolygonPatch.getElementsByTagName("interior")
+
+        /* Attributes */
+        var refcat = xmlDoc.getElementsByTagName("nationalCadastralReference")[0].childNodes[0].nodeValue
+        var area = xmlDoc.getElementsByTagName("areaValue")[0].childNodes[0].nodeValue
+
+
 
         var coordinates = []
 
@@ -40,9 +47,8 @@ export default class CatastroParser {
         var geojsonFeature = {
           "type": "Feature",
           "properties": {
-            "name": "Coors Field",
-            "amenity": "Baseball Stadium",
-            "popupContent": "This is where the Rockies play!"
+            "refcat": refcat,
+            "area": area
           },
           "geometry": {
           "type": "MultiPolygon",
