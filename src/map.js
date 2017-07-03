@@ -45,7 +45,7 @@ export default class Map {
     })
 
     
-    const catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?'
+    const catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?'
 
     const catastroBase = L.nonTiledLayer.wms(
       catastroUrl, 
