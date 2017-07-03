@@ -5,7 +5,6 @@ import '../node_modules/leaflet-measure/dist/leaflet-measure.css'
 import 'leaflet.nontiledlayer'
 import 'leaflet.gridlayer.googlemutant'
 import {MAX_ZOOM} from './constants' 
-//import './catastroParser'
 
 export default class Map {
 
@@ -29,8 +28,8 @@ export default class Map {
       captureZIndex: 10000
     }
 
-    const measureControl = L.control.measure(measureOptions);
-    measureControl.addTo(this.map);
+    const measureControl = L.control.measure(measureOptions)
+    measureControl.addTo(this.map)
 
     const pnoa = L.tileLayer.wms('http://www.ign.es/wms-inspire/pnoa-ma?', {
       maxZoom: MAX_ZOOM,
@@ -86,11 +85,17 @@ export default class Map {
     }
 
     const overLays = {
-      'Catastro.nonTiledLayer' : catastroOverlay,
+      'Catastro' : catastroOverlay,
       //'Catastro.wms': Spain_Catastro
     }
 
-    L.control.layers(baseMaps, overLays).addTo(this.map)
+    /* Configuración Control de Capas */
+    const layerControl = L.control.layers(baseMaps, overLays, {collapsed:false})
+    layerControl.addTo(this.map)
+
+    var htmlObject = layerControl.getContainer()
+    $('#panel-capas').append(htmlObject)
+
   }
 
   clearHighLight() {
