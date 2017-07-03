@@ -30,22 +30,18 @@
                 <a class="navbar-brand" href="#">CatastroLeaf</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="menu-toggle"><i class="fa fa-question-circle white"></i>Menu</a></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="menu-toggle"><i class="glyphicon glyphicon-menu-hamburger"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Herramientas
-                    </a>
-                </li>
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div id="mySidenav" class="sidenav">
+        <a href="#" class="closebtn" >&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
@@ -98,19 +94,10 @@
                     </div>
                 </div>
             </div>
-        </ul>
-            
-        </div>
-        <!-- /#sidebar-wrapper -->
+    </div>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div id="map-wrapper">
-                <div id="map"></div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
+    <div id="map-wrapper">
+        <div id="map"></div>
     </div>
 
     <script src="./js/main.js"></script>
