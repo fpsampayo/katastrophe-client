@@ -52,6 +52,7 @@
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
+    padding-right: 250px!important;
 }
 
 /* Sidebar Styles */
@@ -129,5 +130,7 @@
     #wrapper.toggled #page-content-wrapper {
         position: absolute;
         margin-right: 0;
+        padding-right: 0;
+        width: 100%!important;
     }
 }

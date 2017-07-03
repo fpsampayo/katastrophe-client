@@ -38,7 +38,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="menu-toggle"><i class="fa fa-question-circle white"></i>Menu</a></li>
             </ul>
-            <div class="collapse navbar-collapse" id="login_refcat_form">
+            <!--<div class="collapse navbar-collapse" id="login_refcat_form">
                 <form class="navbar-form navbar-right" id="navRefCatForm">
                     <div class="nav input-group">
                         <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
@@ -47,7 +47,7 @@
                 </span>
                     </div>
                 </form>
-            </div>
+            </div>-->
         </div>
     </nav>
 
@@ -58,31 +58,79 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Start Bootstrap
+                        CatastroVisor
                     </a>
                 </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Buscar
+                        </a>
+                    </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <form class="navbar-form navbar-right" id="navRefCatForm">
+                            <div class="nav input-group">
+                                <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
+                                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="btn-search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Histórico
+                        </a>
+                    </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        asa sc
+                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-group" id="accordionCapas" role="tablist" aria-multiselectable="true">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionCapas" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Capas
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThreeOne">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionCapas" href="#collapseThreeOne" aria-expanded="false" aria-controls="collapseThreeOne">
+                                    Capas Base
+                                    </a>
+                                </h4>
+                                </div>
+                                <div id="collapseThreeOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThreeOne">
+                                <div class="panel-body">
+                                    asa sc
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+            
         </div>
         <!-- /#sidebar-wrapper -->
 

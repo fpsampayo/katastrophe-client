@@ -30,3 +30,11 @@ nav {
 .modal-footer {
     border-top: 0!important;
 }
+
+.panel {
+    border-radius: 0px!important;
+}
+
+#accordionCapas{
+    margin-bottom: 0px!important;
+}
