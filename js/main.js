@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7d8243a6644372a3020c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9eb743bb41e7d993db22"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -3286,21 +3286,6 @@ exports.push([module.i, "/* required styles */\r\n\r\n.leaflet-pane,\r\n.leaflet
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./src/styles/simple-sidebar.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "/*!\r\n * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)\r\n * Copyright 2013-2016 Start Bootstrap\r\n * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)\r\n */\r\n\r\n body {\r\n    overflow-x: hidden;\r\n    overflow-y: hidden;\r\n }\r\n\r\n/* Toggle Styles */\r\n\r\n#wrapper {\r\n    padding-left: 0;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled {\r\n    padding-left: 250px;\r\n}\r\n\r\n#sidebar-wrapper {\r\n    z-index: 1000;\r\n    position: fixed;\r\n    left: 250px;\r\n    width: 0;\r\n    height: 100%;\r\n    margin-left: -250px;\r\n    overflow-y: auto;\r\n    background: #000;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled #sidebar-wrapper {\r\n    width: 250px;\r\n}\r\n\r\n#page-content-wrapper {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding-bottom: 52px;\r\n    position: absolute;\r\n}\r\n\r\n#wrapper.toggled #page-content-wrapper {\r\n    position: absolute;\r\n    margin-right: -250px;\r\n    padding-right: 250px!important;\r\n}\r\n\r\n/* Sidebar Styles */\r\n\r\n.sidebar-nav {\r\n    position: absolute;\r\n    top: 0;\r\n    width: 250px;\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.sidebar-nav li {\r\n    text-indent: 20px;\r\n    line-height: 40px;\r\n}\r\n\r\n.sidebar-nav li a {\r\n    display: block;\r\n    text-decoration: none;\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav li a:hover {\r\n    text-decoration: none;\r\n    color: #fff;\r\n    background: rgba(255,255,255,0.2);\r\n}\r\n\r\n.sidebar-nav li a:active,\r\n.sidebar-nav li a:focus {\r\n    text-decoration: none;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand {\r\n    height: 65px;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a {\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a:hover {\r\n    color: #fff;\r\n    background: none;\r\n}\r\n\r\n@media(min-width:768px) {\r\n    #wrapper {\r\n        padding-left: 0;\r\n    }\r\n\r\n    #wrapper.toggled {\r\n        padding-left: 250px;\r\n    }\r\n\r\n    #sidebar-wrapper {\r\n        width: 0;\r\n    }\r\n\r\n    #wrapper.toggled #sidebar-wrapper {\r\n        width: 250px;\r\n    }\r\n\r\n    #page-content-wrapper {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding-bottom: 52px;\r\n        position: absolute;\r\n    }\r\n\r\n    #wrapper.toggled #page-content-wrapper {\r\n        position: absolute;\r\n        margin-right: 0;\r\n        padding-right: 0;\r\n        width: 100%!important;\r\n    }\r\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js!./src/styles/styles.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3309,7 +3294,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 52px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}\r\n\r\n.panel {\r\n    border-radius: 0px!important;\r\n}\r\n\r\n#accordionCapas{\r\n    margin-bottom: 0px!important;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}", ""]);
+exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 52px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}\r\n\r\n.panel {\r\n    border-radius: 0px!important;\r\n}\r\n\r\n#accordionCapas{\r\n    margin-bottom: 0px!important;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n\r\n/*SideNav*/\r\n\r\n.sidenav {\r\n    height: 100%;\r\n    width: 0;\r\n    position: fixed;\r\n    z-index: 10000;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: #111;\r\n    overflow-x: hidden;\r\n    transition: 0.5s;\r\n    margin-top: 51px;\r\n}\r\n\r\n.sidenav h4 {\r\n    padding: 8px 8px 8px 32px;\r\n    text-decoration: none;\r\n    font-size: 25px;\r\n    color: #818181;\r\n    display: block;\r\n    transition: 0.3s;\r\n}\r\n\r\n.sidenav a:hover, .sidenav a:focus{\r\n    color: #f1f1f1;\r\n    text-decoration: none!important;\r\n}\r\n\r\n.sidenav .closebtn {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 25px;\r\n    font-size: 36px;\r\n    margin-left: 50px;\r\n}\r\n\r\n@media screen and (max-height: 450px) {\r\n  .sidenav { margin-top: 60px!important;}\r\n  .sidenav a {font-size: 18px;}\r\n  \r\n}\r\n\r\n.sidenav.toggled {\r\n    width: 250px;\r\n}\r\n\r\n.panel-default {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n    border-color: rgba(0,0,0,0)!important;\r\n    border-left: 0px!important;\r\n    border-right: 0px!important;\r\n}\r\n\r\n.panel-heading {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n}\r\n\r\n.panel-collapse {\r\n    background-color: white;\r\n    width: 100%!important;\r\n}\r\n\r\n.navbar {\r\n    height: 50px!important;\r\n}", ""]);
 
 // exports
 
@@ -36671,10 +36656,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bootstrap_dist_css_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_bootstrap_dist_css_bootstrap_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_styles_css__ = __webpack_require__("./src/styles/styles.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_styles_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__styles_styles_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styles_simple_sidebar_css__ = __webpack_require__("./src/styles/simple-sidebar.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styles_simple_sidebar_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__styles_simple_sidebar_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__catastroParser__ = __webpack_require__("./src/catastroParser.js");
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__catastroParser__ = __webpack_require__("./src/catastroParser.js");
 
 
 
@@ -36687,17 +36669,15 @@ if (true) {
 }
 
 const map = new __WEBPACK_IMPORTED_MODULE_2__map__["a" /* default */]();
-const catastroParser = new __WEBPACK_IMPORTED_MODULE_6__catastroParser__["a" /* default */]();
-const btnSearch = document.getElementById('btn-search');
+const catastroParser = new __WEBPACK_IMPORTED_MODULE_5__catastroParser__["a" /* default */]();
 const btnSidebar = document.getElementById('menu-toggle');
+
+const btnSearch = document.getElementById('btn-search');
 
 btnSearch.addEventListener('click', evt => {
   evt.stopPropagation();
   const refCat = document.getElementById('txt-refcat').value;
-  /*
-  var json = catastroParser.getParcel(refCat)
-    map.loadGeoJson(json)
-  */
+
   catastroParser.getParcel(refCat).then(geoJson => {
     map.loadGeoJson(geoJson);
   });
@@ -36705,8 +36685,12 @@ btnSearch.addEventListener('click', evt => {
 
 btnSidebar.addEventListener('click', evt => {
   evt.preventDefault();
-  $("#wrapper").toggleClass("toggled");
+  $("#mySidenav").toggleClass("toggled");
 });
+
+if (document.body.clientWidth >= 767) {
+  $("#mySidenav").toggleClass("toggled");
+}
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
@@ -36837,38 +36821,6 @@ class Map {
 /* harmony export (immutable) */ __webpack_exports__["a"] = Map;
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
-/***/ "./src/styles/simple-sidebar.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./src/styles/simple-sidebar.css");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(true) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("./node_modules/css-loader/index.js!./src/styles/simple-sidebar.css", function() {
-			var newContent = __webpack_require__("./node_modules/css-loader/index.js!./src/styles/simple-sidebar.css");
-			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
