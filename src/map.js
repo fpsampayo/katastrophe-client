@@ -12,13 +12,15 @@ export default class Map {
     this.map = L.map("map", {
                  zoom: 10,
                  center: [42.284829, -8.553642],
-                 zoomControl: true,
+                 zoomControl: false,
                  attributionControl: true,
                  maxZoom: MAX_ZOOM
     })
 
+    L.control.zoom({position: 'bottomright'}).addTo(this.map)
+
     const measureOptions = {
-      position: 'topleft',
+      position: 'topright',
       localization: 'es',
       
       primaryLengthUnit: 'meters', 

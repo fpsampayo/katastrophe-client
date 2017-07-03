@@ -38,3 +38,9 @@ nav {
 #accordionCapas{
     margin-bottom: 0px!important;
 }
+
+.leaflet-control-layers{
+    padding: 0px!important;
+    border-radius: 0px!important;
+    box-shadow: none!important;
+}
