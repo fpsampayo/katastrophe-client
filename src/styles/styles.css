@@ -86,6 +86,7 @@ nav {
 @media screen and (max-height: 450px) {
   .sidenav { margin-top: 60px!important;}
   .sidenav a {font-size: 18px;}
+  
 }
 
 .sidenav.toggled {
@@ -106,4 +107,8 @@ nav {
 .panel-collapse {
     background-color: white;
     width: 100%!important;
+}
+
+.navbar {
+    height: 50px!important;
 }
