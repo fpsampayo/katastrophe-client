@@ -9,41 +9,43 @@ export default class CatastroParser {
     return new Promise((resolve, reject) => {
 
       $.get(this.catParcelUrl + refcat, function(xmlDoc, status){
-        /* Geometries */
-        var PolygonPatch = xmlDoc.getElementsByTagName("PolygonPatch")[0]
-        var Exterior = PolygonPatch.getElementsByTagName("exterior")
-        var interior = PolygonPatch.getElementsByTagName("interior")
 
         /* Attributes */
         var refcat = xmlDoc.getElementsByTagName("nationalCadastralReference")[0].childNodes[0].nodeValue
         var area = xmlDoc.getElementsByTagName("areaValue")[0].childNodes[0].nodeValue
 
-
+        /* Geometries */
+        var PolygonPatch = xmlDoc.getElementsByTagName("PolygonPatch")
 
         var coordinates = []
 
-        for (var ext of Exterior){
-          var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
-          var i = 0
-          var points = []
-          for (var a of Array(array.length / 2)){
-            points.push([array[i + 1], array[i]])
-            i = i + 2
-          }
-          coordinates.push([points])
-        }
+        for (var polygon of PolygonPatch) {
+          var exterior = polygon.getElementsByTagName("exterior")
+          var interior = polygon.getElementsByTagName("interior")
 
-        for (var ext of interior){
-          var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
-          var i = 0
-          var points = []
-          for (var a of Array(array.length / 2)){
-            points.push([array[i + 1], array[i]])
-            i = i + 2
+          for (var ext of exterior){
+            var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
+            var i = 0
+            var points = []
+            for (var a of Array(array.length / 2)){
+              points.push([array[i + 1], array[i]])
+              i = i + 2
+            }
+            coordinates.push([points])
           }
-          coordinates.push([points])
-        }
 
+          for (var ext of interior){
+            var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ")
+            var i = 0
+            var points = []
+            for (var a of Array(array.length / 2)){
+              points.push([array[i + 1], array[i]])
+              i = i + 2
+            }
+            coordinates.push([points])
+          }
+        }
+        
         var geojsonFeature = {
           "type": "Feature",
           "properties": {
