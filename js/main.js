@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a34ca5b17db5c7b4f5c6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2409f2831e95d6c9412e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -3294,7 +3294,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/*!\r\n * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)\r\n * Copyright 2013-2016 Start Bootstrap\r\n * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)\r\n */\r\n\r\n body {\r\n    overflow-x: hidden;\r\n    overflow-y: hidden;\r\n }\r\n\r\n/* Toggle Styles */\r\n\r\n#wrapper {\r\n    padding-left: 0;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled {\r\n    padding-left: 250px;\r\n}\r\n\r\n#sidebar-wrapper {\r\n    z-index: 1000;\r\n    position: fixed;\r\n    left: 250px;\r\n    width: 0;\r\n    height: 100%;\r\n    margin-left: -250px;\r\n    overflow-y: auto;\r\n    background: #000;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled #sidebar-wrapper {\r\n    width: 250px;\r\n}\r\n\r\n#page-content-wrapper {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding-bottom: 52px;\r\n}\r\n\r\n#wrapper.toggled #page-content-wrapper {\r\n    position: absolute;\r\n    margin-right: -250px;\r\n}\r\n\r\n/* Sidebar Styles */\r\n\r\n.sidebar-nav {\r\n    position: absolute;\r\n    top: 0;\r\n    width: 250px;\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.sidebar-nav li {\r\n    text-indent: 20px;\r\n    line-height: 40px;\r\n}\r\n\r\n.sidebar-nav li a {\r\n    display: block;\r\n    text-decoration: none;\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav li a:hover {\r\n    text-decoration: none;\r\n    color: #fff;\r\n    background: rgba(255,255,255,0.2);\r\n}\r\n\r\n.sidebar-nav li a:active,\r\n.sidebar-nav li a:focus {\r\n    text-decoration: none;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand {\r\n    height: 65px;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a {\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a:hover {\r\n    color: #fff;\r\n    background: none;\r\n}\r\n\r\n@media(min-width:768px) {\r\n    #wrapper {\r\n        padding-left: 0;\r\n    }\r\n\r\n    #wrapper.toggled {\r\n        padding-left: 250px;\r\n    }\r\n\r\n    #sidebar-wrapper {\r\n        width: 0;\r\n    }\r\n\r\n    #wrapper.toggled #sidebar-wrapper {\r\n        width: 250px;\r\n    }\r\n\r\n    #page-content-wrapper {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding-bottom: 52px;\r\n        position: absolute;\r\n    }\r\n\r\n    #wrapper.toggled #page-content-wrapper {\r\n        position: absolute;\r\n        margin-right: 0;\r\n    }\r\n}", ""]);
+exports.push([module.i, "/*!\r\n * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)\r\n * Copyright 2013-2016 Start Bootstrap\r\n * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)\r\n */\r\n\r\n body {\r\n    overflow-x: hidden;\r\n    overflow-y: hidden;\r\n }\r\n\r\n/* Toggle Styles */\r\n\r\n#wrapper {\r\n    padding-left: 0;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled {\r\n    padding-left: 250px;\r\n}\r\n\r\n#sidebar-wrapper {\r\n    z-index: 1000;\r\n    position: fixed;\r\n    left: 250px;\r\n    width: 0;\r\n    height: 100%;\r\n    margin-left: -250px;\r\n    overflow-y: auto;\r\n    background: #000;\r\n    -webkit-transition: all 0.5s ease;\r\n    -moz-transition: all 0.5s ease;\r\n    -o-transition: all 0.5s ease;\r\n    transition: all 0.5s ease;\r\n}\r\n\r\n#wrapper.toggled #sidebar-wrapper {\r\n    width: 250px;\r\n}\r\n\r\n#page-content-wrapper {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding-bottom: 52px;\r\n    position: absolute;\r\n}\r\n\r\n#wrapper.toggled #page-content-wrapper {\r\n    position: absolute;\r\n    margin-right: -250px;\r\n    padding-right: 250px!important;\r\n}\r\n\r\n/* Sidebar Styles */\r\n\r\n.sidebar-nav {\r\n    position: absolute;\r\n    top: 0;\r\n    width: 250px;\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.sidebar-nav li {\r\n    text-indent: 20px;\r\n    line-height: 40px;\r\n}\r\n\r\n.sidebar-nav li a {\r\n    display: block;\r\n    text-decoration: none;\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav li a:hover {\r\n    text-decoration: none;\r\n    color: #fff;\r\n    background: rgba(255,255,255,0.2);\r\n}\r\n\r\n.sidebar-nav li a:active,\r\n.sidebar-nav li a:focus {\r\n    text-decoration: none;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand {\r\n    height: 65px;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a {\r\n    color: #999999;\r\n}\r\n\r\n.sidebar-nav > .sidebar-brand a:hover {\r\n    color: #fff;\r\n    background: none;\r\n}\r\n\r\n@media(min-width:768px) {\r\n    #wrapper {\r\n        padding-left: 0;\r\n    }\r\n\r\n    #wrapper.toggled {\r\n        padding-left: 250px;\r\n    }\r\n\r\n    #sidebar-wrapper {\r\n        width: 0;\r\n    }\r\n\r\n    #wrapper.toggled #sidebar-wrapper {\r\n        width: 250px;\r\n    }\r\n\r\n    #page-content-wrapper {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding-bottom: 52px;\r\n        position: absolute;\r\n    }\r\n\r\n    #wrapper.toggled #page-content-wrapper {\r\n        position: absolute;\r\n        margin-right: 0;\r\n        padding-right: 0;\r\n        width: 100%!important;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -3309,7 +3309,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 52px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}", ""]);
+exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 52px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}\r\n\r\n.panel {\r\n    border-radius: 0px!important;\r\n}\r\n\r\n#accordionCapas{\r\n    margin-bottom: 0px!important;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}", ""]);
 
 // exports
 
@@ -36588,37 +36588,41 @@ class CatastroParser {
     return new Promise((resolve, reject) => {
 
       $.get(this.catParcelUrl + refcat, function (xmlDoc, status) {
-        /* Geometries */
-        var PolygonPatch = xmlDoc.getElementsByTagName("PolygonPatch")[0];
-        var Exterior = PolygonPatch.getElementsByTagName("exterior");
-        var interior = PolygonPatch.getElementsByTagName("interior");
 
         /* Attributes */
         var refcat = xmlDoc.getElementsByTagName("nationalCadastralReference")[0].childNodes[0].nodeValue;
         var area = xmlDoc.getElementsByTagName("areaValue")[0].childNodes[0].nodeValue;
 
+        /* Geometries */
+        var PolygonPatch = xmlDoc.getElementsByTagName("PolygonPatch");
+
         var coordinates = [];
 
-        for (var ext of Exterior) {
-          var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ");
-          var i = 0;
-          var points = [];
-          for (var a of Array(array.length / 2)) {
-            points.push([array[i + 1], array[i]]);
-            i = i + 2;
-          }
-          coordinates.push([points]);
-        }
+        for (var polygon of PolygonPatch) {
+          var exterior = polygon.getElementsByTagName("exterior");
+          var interior = polygon.getElementsByTagName("interior");
 
-        for (var ext of interior) {
-          var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ");
-          var i = 0;
-          var points = [];
-          for (var a of Array(array.length / 2)) {
-            points.push([array[i + 1], array[i]]);
-            i = i + 2;
+          for (var ext of exterior) {
+            var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ");
+            var i = 0;
+            var points = [];
+            for (var a of Array(array.length / 2)) {
+              points.push([array[i + 1], array[i]]);
+              i = i + 2;
+            }
+            coordinates.push([points]);
           }
-          coordinates.push([points]);
+
+          for (var ext of interior) {
+            var array = ext.getElementsByTagName("posList")[0].childNodes[0].nodeValue.trim().split(" ");
+            var i = 0;
+            var points = [];
+            for (var a of Array(array.length / 2)) {
+              points.push([array[i + 1], array[i]]);
+              i = i + 2;
+            }
+            coordinates.push([points]);
+          }
         }
 
         var geojsonFeature = {
@@ -36711,7 +36715,7 @@ btnSidebar.addEventListener('click', evt => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__("./node_modules/leaflet/dist/leaflet-src.js");
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__("./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css__ = __webpack_require__("./node_modules/leaflet/dist/leaflet.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css__);
@@ -36731,7 +36735,6 @@ btnSidebar.addEventListener('click', evt => {
 
 
 
-//import './catastroParser'
 
 class Map {
 
@@ -36739,13 +36742,15 @@ class Map {
     this.map = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.map("map", {
       zoom: 10,
       center: [42.284829, -8.553642],
-      zoomControl: true,
+      zoomControl: false,
       attributionControl: true,
       maxZoom: __WEBPACK_IMPORTED_MODULE_6__constants__["a" /* MAX_ZOOM */]
     });
 
+    __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.zoom({ position: 'bottomright' }).addTo(this.map);
+
     const measureOptions = {
-      position: 'topleft',
+      position: 'topright',
       localization: 'es',
 
       primaryLengthUnit: 'meters',
@@ -36770,7 +36775,7 @@ class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     });
 
-    const catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?';
+    const catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?';
 
     const catastroBase = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.nonTiledLayer.wms(catastroUrl, {
       maxZoom: __WEBPACK_IMPORTED_MODULE_6__constants__["a" /* MAX_ZOOM */],
@@ -36808,11 +36813,16 @@ class Map {
     };
 
     const overLays = {
-      'Catastro.nonTiledLayer': catastroOverlay
+      'Catastro': catastroOverlay
       //'Catastro.wms': Spain_Catastro
-    };
 
-    __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.layers(baseMaps, overLays).addTo(this.map);
+
+      /* Configuración Control de Capas */
+    };const layerControl = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.layers(baseMaps, overLays, { collapsed: false });
+    layerControl.addTo(this.map);
+
+    var htmlObject = layerControl.getContainer();
+    $('#panel-capas').append(htmlObject);
   }
 
   clearHighLight() {
@@ -36826,6 +36836,7 @@ class Map {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Map;
 
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
