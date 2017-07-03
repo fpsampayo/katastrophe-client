@@ -58,11 +58,10 @@ nav {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
     margin-top: 52px;
 }
 
-.sidenav a, .sidenav h4 {
+.sidenav h4 {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -71,8 +70,9 @@ nav {
     transition: 0.3s;
 }
 
-.sidenav a:hover, .offcanvas a:focus{
+.sidenav a:hover, .sidenav a:focus{
     color: #f1f1f1;
+    text-decoration: none!important;
 }
 
 .sidenav .closebtn {
@@ -84,7 +84,7 @@ nav {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px; margin-top: 60px!important;}
+  .sidenav { margin-top: 60px!important;}
   .sidenav a {font-size: 18px;}
 }
 
