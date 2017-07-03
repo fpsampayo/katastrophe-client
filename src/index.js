@@ -34,3 +34,11 @@ btnSidebar.addEventListener('click', (evt) => {
 if (document.body.clientWidth >= 767) {
   $("#mySidenav").toggleClass("toggled")
 }
+
+/* Previene que al pulsar intro se refresque la web y dispara el evento click */
+$("#navRefCatForm").keypress(function (e) {
+  if (e.which == 13) {
+    e.preventDefault()
+    btnSearch.click()
+  }
+})
