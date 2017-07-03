@@ -33,7 +33,7 @@ export default class Map {
     const measureControl = L.control.measure(measureOptions)
     measureControl.addTo(this.map)
 
-    const pnoa = L.tileLayer.wms('http://www.ign.es/wms-inspire/pnoa-ma?', {
+    const pnoa = L.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma?', {
       maxZoom: MAX_ZOOM,
       layers: 'OI.OrthoimageCoverage',
       format: 'image/png',
