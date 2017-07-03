@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2409f2831e95d6c9412e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7d8243a6644372a3020c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -700,7 +700,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/js/";
+/******/ 	__webpack_require__.p = "./js/";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -36763,7 +36763,7 @@ class Map {
     const measureControl = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.measure(measureOptions);
     measureControl.addTo(this.map);
 
-    const pnoa = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer.wms('http://www.ign.es/wms-inspire/pnoa-ma?', {
+    const pnoa = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma?', {
       maxZoom: __WEBPACK_IMPORTED_MODULE_6__constants__["a" /* MAX_ZOOM */],
       layers: 'OI.OrthoimageCoverage',
       format: 'image/png',
