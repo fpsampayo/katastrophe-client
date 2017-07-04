@@ -59,7 +59,7 @@ export default class Map {
       }
     )
 
-    const catastroOverlay = L.nonTiledLayer.wms(catastroUrl, {
+    this.catastroOverlay = L.nonTiledLayer.wms(catastroUrl, {
       maxZoom: MAX_ZOOM,
       layers: 'Catastro',
       format: 'image/png',
@@ -87,7 +87,7 @@ export default class Map {
     }
 
     const overLays = {
-      'Catastro' : catastroOverlay,
+      'Catastro' : this.catastroOverlay,
       //'Catastro.wms': Spain_Catastro
     }
 
@@ -96,7 +96,9 @@ export default class Map {
     layerControl.addTo(this.map)
 
     var htmlObject = layerControl.getContainer()
-    $('#panel-capas').append(htmlObject)
+
+    const panelCapas = document.getElementById('panel-capas')
+    panelCapas.appendChild(htmlObject)
 
   }
 
@@ -107,6 +109,16 @@ export default class Map {
   loadGeoJson(geoJson) {
     this.clearHighLight()
     this.highlight.addData(geoJson)
+  }
+
+  catastroHistorico() {
+    
+    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=2017-07-01"
+    this.catastroOverlay.addTo(this.map)
+
+    this.catastroOverlay.redraw()
+
+    console.log(this.map)
   }
 }
 

@@ -15,30 +15,39 @@ const catastroParser = new CatastroParser()
 const btnSidebar = document.getElementById('menu-toggle')
 
 const btnSearch = document.getElementById('btn-search')
+const imputRefCat = document.getElementById('navRefCatForm')
+const navHistorico = document.getElementById('nav-historico')
 
+const sideNav = document.getElementById('mySidenav')
 
-btnSearch.addEventListener('click', (evt) => {
-  evt.stopPropagation()
+const refCatSearch = () => {
   const refCat = document.getElementById('txt-refcat').value
   
   catastroParser.getParcel(refCat).then((geoJson) => {
     map.loadGeoJson(geoJson)
   })
+}
+
+
+btnSearch.addEventListener('click', (evt) => {
+  evt.stopPropagation()
+  
+  refCatSearch()
+})
+
+/* Previene que al pulsar intro se refresque la web y dispara el evento click */
+imputRefCat.addEventListener('keypress', (e) => {
+  if (e.which == 13) {
+    e.preventDefault()
+    refCatSearch()
+  }
 })
 
 btnSidebar.addEventListener('click', (evt) => {
   evt.preventDefault()
-  $("#mySidenav").toggleClass("toggled")  
+  sideNav.classList.toggle('toggled')
 })
 
 if (document.body.clientWidth >= 767) {
-  $("#mySidenav").toggleClass("toggled")
+  sideNav.classList.toggle('toggled')
 }
-
-/* Previene que al pulsar intro se refresque la web y dispara el evento click */
-$("#navRefCatForm").keypress(function (e) {
-  if (e.which == 13) {
-    e.preventDefault()
-    btnSearch.click()
-  }
-})
