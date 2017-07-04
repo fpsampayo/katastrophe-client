@@ -57,6 +57,8 @@ if (document.body.clientWidth >= 767) {
 
 $('#sandbox-container .input-group.date').datepicker({
   format: "dd/mm/yyyy",
+  endDate: "today",
+  maxViewMode: 2,
   language: "es",
   daysOfWeekHighlighted: "0,6",
   autoclose: true,
