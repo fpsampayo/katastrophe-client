@@ -2,6 +2,9 @@ import 'jquery'
 import 'bootstrap'
 import Map from './map'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-datepicker'
+import '../node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min'
+import '../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'
 import './styles/styles.css'
 import CatastroParser from './catastroParser'
 
@@ -16,7 +19,7 @@ const btnSidebar = document.getElementById('menu-toggle')
 
 const btnSearch = document.getElementById('btn-search')
 const imputRefCat = document.getElementById('navRefCatForm')
-const navHistorico = document.getElementById('nav-historico')
+const inputFechaCatastro = document.getElementById('fecha-catastro')
 
 const sideNav = document.getElementById('mySidenav')
 
@@ -51,3 +54,20 @@ btnSidebar.addEventListener('click', (evt) => {
 if (document.body.clientWidth >= 767) {
   sideNav.classList.toggle('toggled')
 }
+
+$('#sandbox-container .input-group.date').datepicker({
+  format: "dd/mm/yyyy",
+  language: "es",
+  daysOfWeekHighlighted: "0,6",
+  autoclose: true,
+  clearBtn: true,
+  todayHighlight: true
+}).on('changeDate', function(e) {
+  var dd = e.date.getDate()
+  var mm = e.date.getMonth() + 1
+  var yyyy = e.date.getFullYear() 
+  var dateString = yyyy + '-' + mm + '-' + dd
+  map.catastroHistorico(dateString)
+}).on('clearDate', function(e) {
+  map.desactivaCatastroHistorico()
+})

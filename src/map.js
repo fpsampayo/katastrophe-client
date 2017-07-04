@@ -110,15 +110,23 @@ export default class Map {
     this.clearHighLight()
     this.highlight.addData(geoJson)
   }
-
-  catastroHistorico() {
+  /**
+   * 
+   * @param {string} dateString - Fecha en formato yyyy-mm-dd
+   */
+  catastroHistorico(dateString) {
     
-    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=2017-07-01"
+    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=" + dateString
     this.catastroOverlay.addTo(this.map)
 
     this.catastroOverlay.redraw()
+  }
 
-    console.log(this.map)
+  desactivaCatastroHistorico() {
+    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
+    this.catastroOverlay.addTo(this.map)
+
+    this.catastroOverlay.redraw()
   }
 }
 
