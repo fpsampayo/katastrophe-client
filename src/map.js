@@ -48,7 +48,7 @@ export default class Map {
     
     const catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?'
 
-    const catastroBase = L.nonTiledLayer.wms(
+    this.catastroBase = L.nonTiledLayer.wms(
       catastroUrl, 
       {
         maxZoom: MAX_ZOOM,
@@ -82,7 +82,7 @@ export default class Map {
 
     const baseMaps = {
       PNOA: pnoa,
-      Catastro: catastroBase,
+      Catastro: this.catastroBase,
       'Google Satellite': satellite
     }
 
@@ -111,22 +111,25 @@ export default class Map {
     this.highlight.addData(geoJson)
   }
   /**
-   * 
+   * Activa el catastro histórico para la fecha seleccionada
    * @param {string} dateString - Fecha en formato yyyy-mm-dd
    */
   catastroHistorico(dateString) {
     
     this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=" + dateString
-    this.catastroOverlay.addTo(this.map)
-
+    this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=" + dateString
     this.catastroOverlay.redraw()
+    this.catastroBase.redraw()
   }
 
+  /**
+   * Desactiva el catastro histórico
+   */
   desactivaCatastroHistorico() {
     this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
-    this.catastroOverlay.addTo(this.map)
-
+    this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
     this.catastroOverlay.redraw()
+    this.catastroBase.redraw()
   }
 }
 
