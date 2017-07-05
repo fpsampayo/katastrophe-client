@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f54347db991f5a0a0f35"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a3c907e96c33949e686f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -764,7 +764,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n/*\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n*/\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}\r\n\r\n.panel {\r\n    border-radius: 0px!important;\r\n}\r\n\r\n#accordionCapas{\r\n    margin-bottom: 0px!important;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n\r\n/*SideNav*/\r\n\r\n.sidenav {\r\n    height: 100%;\r\n    width: 0;\r\n    position: fixed;\r\n    z-index: 10000;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: #111;\r\n    overflow-x: hidden;\r\n    transition: 0.5s;\r\n    margin-top: 51px;\r\n}\r\n\r\n.sidenav h4 {\r\n    padding: 8px 8px 8px 32px;\r\n    text-decoration: none;\r\n    font-size: 25px;\r\n    color: #818181;\r\n    display: block;\r\n    transition: 0.3s;\r\n}\r\n\r\n.sidenav a:hover, .sidenav a:focus{\r\n    color: #f1f1f1;\r\n    text-decoration: none!important;\r\n}\r\n\r\n.sidenav .closebtn {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 25px;\r\n    font-size: 36px;\r\n    margin-left: 50px;\r\n}\r\n\r\n@media screen and (max-height: 450px) {\r\n  .sidenav { margin-top: 60px!important;}\r\n  .sidenav a {font-size: 18px;}\r\n  \r\n}\r\n\r\n.sidenav.toggled {\r\n    width: 250px;\r\n}\r\n\r\n.panel-default {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n    border-color: rgba(0,0,0,0)!important;\r\n    border-left: 0px!important;\r\n    border-right: 0px!important;\r\n}\r\n\r\n.panel-heading {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n}\r\n\r\n.panel-collapse {\r\n    background-color: white;\r\n    width: 100%!important;\r\n}\r\n\r\n.navbar {\r\n    height: 50px!important;\r\n}\r\n\r\n#navRefCatForm {\r\n    padding: 0px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}", ""]);
+exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n/*\r\nnav {\r\n    margin-bottom: 0!important;\r\n}\r\n*/\r\n.modal-content {\r\n    border-radius: 0!important;\r\n}\r\n\r\n.modal-header {\r\n    border-bottom: 0!important;\r\n}\r\n\r\n.modal-footer {\r\n    border-top: 0!important;\r\n}\r\n\r\n.panel {\r\n    border-radius: 0px!important;\r\n}\r\n\r\n#accordionCapas{\r\n    margin-bottom: 0px!important;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n\r\n/*SideNav*/\r\n\r\n.sidenav {\r\n    height: 100%;\r\n    width: 0;\r\n    position: fixed;\r\n    z-index: 10000;\r\n    top: 0;\r\n    left: 0;\r\n    background-color: #111;\r\n    overflow-x: hidden;\r\n    transition: 0.5s;\r\n    margin-top: 51px;\r\n}\r\n\r\n.sidenav h4 {\r\n    padding: 8px 8px 8px 32px;\r\n    text-decoration: none;\r\n    font-size: 25px;\r\n    color: #818181;\r\n    display: block;\r\n    transition: 0.3s;\r\n}\r\n\r\n.sidenav a:hover, .sidenav a:focus{\r\n    color: #f1f1f1;\r\n    text-decoration: none!important;\r\n}\r\n\r\n.sidenav .closebtn {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 25px;\r\n    font-size: 36px;\r\n    margin-left: 50px;\r\n}\r\n\r\n@media screen and (max-height: 450px) {\r\n  .sidenav { margin-top: 60px!important;}\r\n  .sidenav a {font-size: 18px;}\r\n  \r\n}\r\n\r\n.sidenav.toggled {\r\n    width: 250px;\r\n}\r\n\r\n.panel-default {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n    border-color: rgba(0,0,0,0)!important;\r\n    border-left: 0px!important;\r\n    border-right: 0px!important;\r\n}\r\n\r\n.panel-heading {\r\n    background-color: rgba(0, 0, 0, 0)!important;\r\n}\r\n\r\n.panel-collapse {\r\n    background-color: white;\r\n    width: 100%!important;\r\n}\r\n\r\n.navbar {\r\n    height: 50px!important;\r\n}\r\n\r\n#navRefCatForm {\r\n    padding: 0px!important;\r\n    margin: 0px!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\n.nav-wrapper {\r\n    z-index: 900;\r\n}", ""]);
 
 // exports
 
@@ -45960,12 +45960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//import 'bootstrap'
 
-//import 'bootstrap/dist/css/bootstrap.css'
-//import 'bootstrap-datepicker'
-//import '../node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min'
-//import '../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'
 
 
 
@@ -45974,19 +45969,11 @@ if (true) {
 }
 
 const map = new __WEBPACK_IMPORTED_MODULE_3__map__["a" /* default */]();
-
 const catastroParser = new __WEBPACK_IMPORTED_MODULE_5__catastroParser__["a" /* default */]();
-/*
-const btnSidebar = document.getElementById('menu-toggle')
-*/
 
-//const btnSearch = document.getElementById('btn-search')
 const imputRefCat = document.getElementById('navRefCatForm');
-/*
-const inputFechaCatastro = document.getElementById('fecha-catastro')
+const toolMeasure = document.getElementById('tool-measure');
 
-const sideNav = document.getElementById('mySidenav')
-*/
 const refCatSearch = () => {
   const refCat = document.getElementById('txt-refcat').value;
 
@@ -45994,14 +45981,6 @@ const refCatSearch = () => {
     map.loadGeoJson(geoJson);
   });
 };
-
-/*
-btnSearch.addEventListener('click', (evt) => {
-  evt.stopPropagation()
-  
-  refCatSearch()
-})
-*/
 
 /* Previene que al pulsar intro se refresque la web y dispara el evento click */
 
@@ -46011,35 +45990,14 @@ imputRefCat.addEventListener('keypress', e => {
     refCatSearch();
   }
 });
-/*
-btnSidebar.addEventListener('click', (evt) => {
-  evt.preventDefault()
-  sideNav.classList.toggle('toggled')
-})
 
-if (document.body.clientWidth >= 767) {
-  sideNav.classList.toggle('toggled')
-}
-
-$('#sandbox-container .input-group.date').datepicker({
-  format: "dd/mm/yyyy",
-  endDate: "today",
-  maxViewMode: 2,
-  language: "es",
-  daysOfWeekHighlighted: "0,6",
-  autoclose: true,
-  clearBtn: true,
-  todayHighlight: true
-}).on('changeDate', function(e) {
-  var dd = e.date.getDate()
-  var mm = e.date.getMonth() + 1
-  var yyyy = e.date.getFullYear() 
-  var dateString = yyyy + '-' + mm + '-' + dd
-  map.catastroHistorico(dateString)
-}).on('clearDate', function(e) {
-  map.desactivaCatastroHistorico()
-})
-*/
+toolMeasure.addEventListener('click', e => {
+  if (e.target.checked) {
+    map.activaMedidor();
+  } else {
+    map.desactivaMedidor();
+  }
+});
 
 $(".button-collapse").sideNav({
   menuWidth: 250
@@ -46116,8 +46074,8 @@ class Map {
       captureZIndex: 10000
     };
 
-    const measureControl = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.measure(measureOptions);
-    measureControl.addTo(this.map);
+    this.measureControl = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.control.measure(measureOptions);
+    this.measureControl.addTo(this.map);
 
     const pnoa = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma?', {
       maxZoom: __WEBPACK_IMPORTED_MODULE_6__constants__["a" /* MAX_ZOOM */],
@@ -46211,6 +46169,14 @@ class Map {
     this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?";
     this.catastroOverlay.redraw();
     this.catastroBase.redraw();
+  }
+
+  desactivaMedidor() {
+    this.measureControl.remove();
+  }
+
+  activaMedidor() {
+    this.measureControl.addTo(this.map);
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Map;
