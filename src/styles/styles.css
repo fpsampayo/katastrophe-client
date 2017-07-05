@@ -2,7 +2,7 @@
 body {
     padding: 0;
     margin: 0;
-    padding-bottom: 52px;
+    padding-bottom: 64px;
 }
 
 #map-wrapper{
@@ -14,11 +14,11 @@ html, body, #map {
     height: 100%;
     width: 100%;
 }
-
+/*
 nav {
     margin-bottom: 0!important;
 }
-
+*/
 .modal-content {
     border-radius: 0!important;
 }
@@ -116,4 +116,24 @@ nav {
 #navRefCatForm {
     padding: 0px!important;
     margin: 0px!important;
+}
+
+#panel-capas{
+  padding-left: 20px;
+}
+
+input[type="checkbox"].leaflet-control-layers-selector {
+  position: inherit;
+  left: inherit;
+  opacity: inherit;
+}
+
+input[type="radio"].leaflet-control-layers-selector {
+  position: inherit;
+  left: inherit;
+  opacity: inherit;
+}
+
+.nav-wrapper {
+    z-index: 900;
 }

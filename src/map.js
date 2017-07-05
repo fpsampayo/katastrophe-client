@@ -30,8 +30,8 @@ export default class Map {
       captureZIndex: 10000
     }
 
-    const measureControl = L.control.measure(measureOptions)
-    measureControl.addTo(this.map)
+    this.measureControl = L.control.measure(measureOptions)
+    this.measureControl.addTo(this.map)
 
     const pnoa = L.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma?', {
       maxZoom: MAX_ZOOM,
@@ -130,6 +130,14 @@ export default class Map {
     this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
     this.catastroOverlay.redraw()
     this.catastroBase.redraw()
+  }
+
+  desactivaMedidor() {
+    this.measureControl.remove()
+  }
+
+  activaMedidor() {
+    this.measureControl.addTo(this.map)
   }
 }
 

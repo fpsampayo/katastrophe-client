@@ -55,9 +55,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
     new webpack.NamedModulesPlugin(),
     new webpack.ProvidePlugin({
-      jQuery: 'jquery',
       $: 'jquery',
-      jquery: 'jquery'
+      jQuery: 'jquery',
+      jquery: 'jquery',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery',
     })
   ],
   node: {

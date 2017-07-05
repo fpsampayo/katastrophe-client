@@ -5,13 +5,12 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>CatastroVisor</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcUY5M6mGzrzGSRnEGBjnH_n_EUZ6Fimc" async defer></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,77 +23,83 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header pull-right">
-                <a class="navbar-brand" href="#">CatastroLeaf</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="menu-toggle"><i class="glyphicon glyphicon-menu-hamburger"></i></a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="mySidenav" class="sidenav">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Buscar
-                    </a>
-                </h4>
+    <header class="z-depth-2">
+        <div class="wrapper">
+            <nav class="top-nav">
+                <div class="nav-wrapper light-green darken-4 z-depth-3">
+                    <a href="#" class="brand-logo center">CatastroLeaf</a>
+                    <ul id="nav-mobile" class="left">
+                        <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a></li>
+                    </ul>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                    <form class="navbar-form navbar-right" id="navRefCatForm">
-                        <div class="nav input-group">
-                            <input type="text" class="form-control" id="txt-refcat" maxlength="14" placeholder="Referencia Catastral">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" id="btn-search">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </span>
+            </nav>
+        </div>
+    </header>
+
+    <ul id="slide-out" class="side-nav fixed z-depth-4">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="./img/pnoa.jpg">
+                </div>
+                <a href="#"><span class="white-text name">Visor Catastral</span></a>
+                <a href="https://github.com/fpsampayo/webpack-leaflet"><span class="white-text link truncate">github.com/fpsampayo/webpack-leaflet</span></a>
+            </div>
+        </li>
+
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active"><i class="material-icons">search</i>Buscar</div>
+                <div class="collapsible-body">
+                    <form class="col s12" id="navRefCatForm">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="txt-refcat" placeholder="Refencia Catastral" type="text" class="validate" maxlength="14">
+                            </div>
                         </div>
                     </form>
                 </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a id="nav-historico" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Histórico
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body" id="medidor">
-                        <div id="sandbox-container">
-                            <div class="input-group date">
-                                <input id="fecha-catastro" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">schedule</i>Histórico</div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="date" class="datepicker" placeholder="Fecha">
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Capas
-                        </a>
-                    </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body" id="panel-capas">
-
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">view_carousel</i>Capas</div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="panel-body" id="panel-capas"></div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">settings</i>Herramientas</div>
+                <div class="collapsible-body">
+                    <div class="panel-body" id="panel-tools">
+                    <div class="row">
+                        <form class="col s12">
+                        <p>
+                            <input type="checkbox" class="filled-in" id="tool-measure" checked="checked" />
+                            <label for="tool-measure">Medidor</label>
+                        </p>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ul>
 
     <div id="map-wrapper">
         <div id="map"></div>
