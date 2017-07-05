@@ -73,7 +73,10 @@ $('.datepicker').pickadate({
   container: document.body, 
   onSet: function(e) {
     var dateString = this.get('select', 'yyyy-mm-dd')
+    if (dateString != ''){
+      console.log('fecha' + dateString)
+    }
     map.catastroHistorico(dateString)
-    this.close()
+    //this.close()
   }
 })
