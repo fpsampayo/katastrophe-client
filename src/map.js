@@ -82,7 +82,7 @@ export default class Map {
       onEachFeature: (feature, layer) => {
         this.map.fitBounds(layer.getBounds())
       }
-    })//.addTo(this.map)
+    }).addTo(this.map)
 
     const baseMaps = {
       PNOA: pnoa,
