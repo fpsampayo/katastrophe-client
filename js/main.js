@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b1764e12f54ddfec4ebf"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "87e8c6802f5079366c50"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46737,7 +46737,7 @@ class Map {
       onEachFeature: (feature, layer) => {
         this.map.fitBounds(layer.getBounds());
       }
-    }); //.addTo(this.map)
+    }).addTo(this.map);
 
     const baseMaps = {
       PNOA: pnoa,
