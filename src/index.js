@@ -1,10 +1,7 @@
 import 'jquery'
-import 'bootstrap'
+import 'materialize-css'
+import '../node_modules/materialize-css/dist/css/materialize.css'
 import Map from './map'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-datepicker'
-import '../node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min'
-import '../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'
 import './styles/styles.css'
 import CatastroParser from './catastroParser'
 
@@ -15,13 +12,9 @@ if (module.hot) {
 
 const map = new Map()
 const catastroParser = new CatastroParser()
-const btnSidebar = document.getElementById('menu-toggle')
 
-const btnSearch = document.getElementById('btn-search')
 const imputRefCat = document.getElementById('navRefCatForm')
-const inputFechaCatastro = document.getElementById('fecha-catastro')
-
-const sideNav = document.getElementById('mySidenav')
+const toolMeasure = document.getElementById('tool-measure')
 
 const refCatSearch = () => {
   const refCat = document.getElementById('txt-refcat').value
@@ -31,14 +24,8 @@ const refCatSearch = () => {
   })
 }
 
-
-btnSearch.addEventListener('click', (evt) => {
-  evt.stopPropagation()
-  
-  refCatSearch()
-})
-
 /* Previene que al pulsar intro se refresque la web y dispara el evento click */
+
 imputRefCat.addEventListener('keypress', (e) => {
   if (e.which == 13) {
     e.preventDefault()
@@ -46,28 +33,49 @@ imputRefCat.addEventListener('keypress', (e) => {
   }
 })
 
-btnSidebar.addEventListener('click', (evt) => {
-  evt.preventDefault()
-  sideNav.classList.toggle('toggled')
+toolMeasure.addEventListener('click', (e) => {
+  if (e.target.checked){
+    map.activaMedidor()
+  } else {
+    map.desactivaMedidor()
+  }
 })
 
-if (document.body.clientWidth >= 767) {
-  sideNav.classList.toggle('toggled')
-}
+$(".button-collapse").sideNav({
+  menuWidth: 250
+})
 
-$('#sandbox-container .input-group.date').datepicker({
-  format: "dd/mm/yyyy",
-  language: "es",
-  daysOfWeekHighlighted: "0,6",
-  autoclose: true,
-  clearBtn: true,
-  todayHighlight: true
-}).on('changeDate', function(e) {
-  var dd = e.date.getDate()
-  var mm = e.date.getMonth() + 1
-  var yyyy = e.date.getFullYear() 
-  var dateString = yyyy + '-' + mm + '-' + dd
-  map.catastroHistorico(dateString)
-}).on('clearDate', function(e) {
-  map.desactivaCatastroHistorico()
+$('.datepicker').pickadate({
+
+  // The title label to use for the month nav buttons
+  labelMonthNext: 'Mes siguiente',
+  labelMonthPrev: 'Mes anterior',
+
+// The title label to use for the dropdown selectors
+  labelMonthSelect: 'Selecciona un mes',
+  labelYearSelect: 'Selecciona un año',
+
+// Months and weekdays
+  monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+  monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+  weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ],
+  weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+
+// Materialize modified
+  weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+
+// Today and clear
+  today: 'Hoy',
+  clear: 'Limpiar',
+  close: 'Cerrar',
+
+  format: 'dd/mm/yyyy',
+  selectMonths: true, 
+  selectYears: 15, 
+  container: document.body, 
+  onSet: function(e) {
+    var dateString = this.get('select', 'yyyy-mm-dd')
+    map.catastroHistorico(dateString)
+    this.close()
+  }
 })
