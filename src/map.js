@@ -15,6 +15,7 @@ export default class Map {
                  center: [42.284829, -8.553642],
                  zoomControl: false,
                  attributionControl: true,
+                 doubleClickZoom: true,
                  maxZoom: MAX_ZOOM
     })
 
@@ -46,7 +47,7 @@ export default class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     })
 
-    this.catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
+    this.catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
 
     this.catastroBase = L.nonTiledLayer.wms(
       this.catastroUrl, 
@@ -81,7 +82,7 @@ export default class Map {
       onEachFeature: (feature, layer) => {
         this.map.fitBounds(layer.getBounds())
       }
-    }).addTo(this.map)
+    })//.addTo(this.map)
 
     const baseMaps = {
       PNOA: pnoa,
