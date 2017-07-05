@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0ac2ca898e23b5172f86"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "51a522af0679112772c8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46707,7 +46707,7 @@ class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     });
 
-    this.catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=';
+    this.catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=';
 
     this.catastroBase = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.nonTiledLayer.wms(this.catastroUrl, {
       maxZoom: __WEBPACK_IMPORTED_MODULE_7__constants__["a" /* MAX_ZOOM */],
