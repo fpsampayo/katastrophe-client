@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a3c907e96c33949e686f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "22f1c3ae3ae6b9485e12"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46004,23 +46004,39 @@ $(".button-collapse").sideNav({
 });
 
 $('.datepicker').pickadate({
+
+  // The title label to use for the month nav buttons
+  labelMonthNext: 'Mes siguiente',
+  labelMonthPrev: 'Mes anterior',
+
+  // The title label to use for the dropdown selectors
+  labelMonthSelect: 'Selecciona un mes',
+  labelYearSelect: 'Selecciona un año',
+
+  // Months and weekdays
+  monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+  weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+  weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+
+  // Materialize modified
+  weekdaysLetter: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+
+  // Today and clear
+  today: 'Hoy',
+  clear: 'Limpiar',
+  close: 'Cerrar',
+
   format: 'dd/mm/yyyy',
-  closeOnSelect: true,
-  closeOnClear: true,
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15, // Creates a dropdown of 15 years to control year
+  selectMonths: true,
+  selectYears: 15,
   container: document.body,
   onSet: function (e) {
-    setDate();
+    var dateString = this.get('select', 'yyyy-mm-dd');
+    map.catastroHistorico(dateString);
+    this.close();
   }
 });
-
-function setDate() {
-  var picker = $('.datepicker').pickadate('picker');
-
-  var dateString = picker.get('select', 'yyyy-mm-dd');
-  map.catastroHistorico(dateString);
-}
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
