@@ -3,7 +3,6 @@ import 'leaflet/dist/leaflet.css'
 import '../node_modules/leaflet-measure/dist/leaflet-measure'
 import '../node_modules/leaflet-measure/dist/leaflet-measure.css'
 import 'leaflet.nontiledlayer'
-import '../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css'
 import 'leaflet.gridlayer.googlemutant'
 import 'leaflet.locatecontrol'
 import {MAX_ZOOM} from './constants' 
@@ -47,7 +46,6 @@ export default class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     })
 
-    
     this.catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
 
     this.catastroBase = L.nonTiledLayer.wms(
@@ -166,7 +164,6 @@ export default class Map {
 
   activaLocation() {
     this.locateControl._onClick()
-    //this.map.locate({setView: true})
   }
 }
 
