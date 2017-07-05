@@ -70,20 +70,12 @@ $('.datepicker').pickadate({
   close: 'Cerrar',
 
   format: 'dd/mm/yyyy',
-  //closeOnSelect: true,
-  //closeOnClear: true,
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15, // Creates a dropdown of 15 years to control year
+  selectMonths: true, 
+  selectYears: 15, 
   container: document.body, 
   onSet: function(e) {
-    setDate()
+    var dateString = this.get('select', 'yyyy-mm-dd')
+    map.catastroHistorico(dateString)
     this.close()
   }
 })
-
-function setDate(){
-  var picker = $('.datepicker').pickadate('picker')
-
-  var dateString = picker.get('select', 'yyyy-mm-dd')
-  map.catastroHistorico(dateString)
-}
