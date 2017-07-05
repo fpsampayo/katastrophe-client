@@ -15,6 +15,7 @@ const catastroParser = new CatastroParser()
 
 const imputRefCat = document.getElementById('navRefCatForm')
 const toolMeasure = document.getElementById('tool-measure')
+const toolLocate = document.getElementById('tool-locate')
 
 const refCatSearch = () => {
   const refCat = document.getElementById('txt-refcat').value
@@ -40,6 +41,13 @@ toolMeasure.addEventListener('click', (e) => {
     map.desactivaMedidor()
   }
 })
+
+toolLocate.addEventListener('change', (e) => {
+  map.activaLocation()
+  console.log(e)
+})
+
+
 
 $(".button-collapse").sideNav({
   menuWidth: 250

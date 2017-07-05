@@ -27,6 +27,7 @@
     "leaflet": "^1.1.0",
     "leaflet-measure": "^2.1.7",
     "leaflet.gridlayer.googlemutant": "^0.6.2",
+    "leaflet.locatecontrol": "^0.62.0",
     "leaflet.nontiledlayer": "^1.0.5",
     "materialize-css": "^0.99.0"
   }
