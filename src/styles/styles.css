@@ -14,108 +14,11 @@ html, body, #map {
     height: 100%;
     width: 100%;
 }
-/*
-nav {
-    margin-bottom: 0!important;
-}
-*/
-.modal-content {
-    border-radius: 0!important;
-}
-
-.modal-header {
-    border-bottom: 0!important;
-}
-
-.modal-footer {
-    border-top: 0!important;
-}
-
-.panel {
-    border-radius: 0px!important;
-}
-
-#accordionCapas{
-    margin-bottom: 0px!important;
-}
 
 .leaflet-control-layers{
     padding: 0px!important;
     border-radius: 0px!important;
     box-shadow: none!important;
-}
-
-
-/*SideNav*/
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    margin-top: 51px;
-}
-
-.sidenav h4 {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover, .sidenav a:focus{
-    color: #f1f1f1;
-    text-decoration: none!important;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav { margin-top: 60px!important;}
-  .sidenav a {font-size: 18px;}
-  
-}
-
-.sidenav.toggled {
-    width: 250px;
-}
-
-.panel-default {
-    background-color: rgba(0, 0, 0, 0)!important;
-    border-color: rgba(0,0,0,0)!important;
-    border-left: 0px!important;
-    border-right: 0px!important;
-}
-
-.panel-heading {
-    background-color: rgba(0, 0, 0, 0)!important;
-}
-
-.panel-collapse {
-    background-color: white;
-    width: 100%!important;
-}
-
-.navbar {
-    height: 50px!important;
-}
-
-#navRefCatForm {
-    padding: 0px!important;
-    margin: 0px!important;
 }
 
 #panel-capas{

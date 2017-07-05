@@ -46,10 +46,10 @@ export default class Map {
     })
 
     
-    const catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?'
+    this.catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
 
     this.catastroBase = L.nonTiledLayer.wms(
-      catastroUrl, 
+      this.catastroUrl, 
       {
         maxZoom: MAX_ZOOM,
         layers: 'Catastro',
@@ -59,13 +59,16 @@ export default class Map {
       }
     )
 
-    this.catastroOverlay = L.nonTiledLayer.wms(catastroUrl, {
-      maxZoom: MAX_ZOOM,
-      layers: 'Catastro',
-      format: 'image/png',
-      transparent: true,
-      attribution: 'DG del Catastro'
-    }).addTo(this.map)
+    this.catastroOverlay = L.nonTiledLayer.wms(
+      this.catastroUrl, 
+      {
+        maxZoom: MAX_ZOOM,
+        layers: 'Catastro',
+        format: 'image/png',
+        transparent: true,
+        attribution: 'DG del Catastro'
+      }
+    ).addTo(this.map)
 
     this.highlight = L.geoJSON(null, {
       pointToLayer:  function (ftr, latLng) {
@@ -87,8 +90,7 @@ export default class Map {
     }
 
     const overLays = {
-      'Catastro' : this.catastroOverlay,
-      //'Catastro.wms': Spain_Catastro
+      'Catastro' : this.catastroOverlay
     }
 
     /* Configuración Control de Capas */
@@ -116,18 +118,8 @@ export default class Map {
    */
   catastroHistorico(dateString) {
     
-    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=" + dateString
-    this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=" + dateString
-    this.catastroOverlay.redraw()
-    this.catastroBase.redraw()
-  }
-
-  /**
-   * Desactiva el catastro histórico
-   */
-  desactivaCatastroHistorico() {
-    this.catastroOverlay._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
-    this.catastroBase._wmsUrl = "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?"
+    this.catastroOverlay._wmsUrl = this.catastroUrl + dateString
+    this.catastroBase._wmsUrl = this.catastroUrl + dateString
     this.catastroOverlay.redraw()
     this.catastroBase.redraw()
   }
