@@ -45,5 +45,16 @@ input[type="radio"].leaflet-control-layers-selector {
     body {
         padding-bottom: 56px;
     }
+}
 
+.side-nav {
+    z-index: 9999;
+}
+
+.drag-target {
+    z-index: 9998;
+}
+
+#sidenav-overlay {
+    z-index: 9997;
 }
