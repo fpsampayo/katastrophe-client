@@ -15,6 +15,7 @@ const catastroParser = new CatastroParser()
 
 const imputRefCat = document.getElementById('navRefCatForm')
 const toolMeasure = document.getElementById('tool-measure')
+const toolLocate = document.getElementById('tool-locate')
 
 const refCatSearch = () => {
   const refCat = document.getElementById('txt-refcat').value
@@ -25,7 +26,6 @@ const refCatSearch = () => {
 }
 
 /* Previene que al pulsar intro se refresque la web y dispara el evento click */
-
 imputRefCat.addEventListener('keypress', (e) => {
   if (e.which == 13) {
     e.preventDefault()
@@ -41,30 +41,28 @@ toolMeasure.addEventListener('click', (e) => {
   }
 })
 
+toolLocate.addEventListener('change', (e) => {
+  map.activaLocation()
+})
+
 $(".button-collapse").sideNav({
   menuWidth: 250
 })
 
 $('.datepicker').pickadate({
-
-  // The title label to use for the month nav buttons
   labelMonthNext: 'Mes siguiente',
   labelMonthPrev: 'Mes anterior',
 
-// The title label to use for the dropdown selectors
   labelMonthSelect: 'Selecciona un mes',
   labelYearSelect: 'Selecciona un año',
 
-// Months and weekdays
   monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
   monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
   weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ],
   weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
 
-// Materialize modified
   weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
 
-// Today and clear
   today: 'Hoy',
   clear: 'Limpiar',
   close: 'Cerrar',

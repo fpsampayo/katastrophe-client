@@ -4,6 +4,7 @@ import '../node_modules/leaflet-measure/dist/leaflet-measure'
 import '../node_modules/leaflet-measure/dist/leaflet-measure.css'
 import 'leaflet.nontiledlayer'
 import 'leaflet.gridlayer.googlemutant'
+import 'leaflet.locatecontrol'
 import {MAX_ZOOM} from './constants' 
 
 export default class Map {
@@ -45,7 +46,6 @@ export default class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     })
 
-    
     this.catastroUrl = 'http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
 
     this.catastroBase = L.nonTiledLayer.wms(
@@ -102,6 +102,36 @@ export default class Map {
     const panelCapas = document.getElementById('panel-capas')
     panelCapas.appendChild(htmlObject)
 
+
+    /* Location */
+    this.locateControl = L.control.locate({
+      position: "bottomright",
+      drawCircle: true,
+      follow: true,
+      setView: 'once',
+      keepCurrentZoomLevel: false,
+      markerStyle: {
+        weight: 1,
+        opacity: 0.8,
+        fillOpacity: 0.8
+      },
+      circleStyle: {
+        weight: 1,
+        clickable: false
+      },
+      metric: true,
+      showPopup: false,
+      locateOptions: {
+        maxZoom: 18,
+        watch: true,
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 10000
+      }
+    }).addTo(this.map)
+
+    var locateDiv = document.getElementsByClassName('leaflet-control-locate')[0]
+    locateDiv.style.display = 'none'
   }
 
   clearHighLight() {
@@ -130,6 +160,10 @@ export default class Map {
 
   activaMedidor() {
     this.measureControl.addTo(this.map)
+  }
+
+  activaLocation() {
+    this.locateControl._onClick()
   }
 }
 
