@@ -3,6 +3,7 @@
 export default class CatastroParser {
   constructor(){
     this.catParcelUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT="
+    this.catInfoXYUrl = "https://crossorigin.me/http://ovc.catastro.meh.es//ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?"
   }
 
   getParcel(refcat){
@@ -61,4 +62,28 @@ export default class CatastroParser {
       })
     })
   }
+
+  getInfoXY(srs, x, y){
+    return new Promise((resolve, reject) => {
+      $.get(
+        this.catInfoXYUrl, 
+        {
+          'SRS': srs,
+          'Coordenada_X': x,
+          'Coordenada_Y': y
+        },
+        function(xmlDoc, status){
+          var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue
+          var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue
+
+          var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue
+
+          var json = {'refcat': pcat1 + pcat2,
+                      'direccion': dir}
+
+          resolve( json )
+        }
+      )
+    }
+  )}
 }
