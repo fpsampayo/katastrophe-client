@@ -74,12 +74,21 @@ export default class CatastroParser {
           'Coordenada_Y': y
         },
         function(xmlDoc, status){
-          var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue
-          var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue
+          var error = xmlDoc.getElementsByTagName("cuerr")[0].childNodes[0].nodeValue
+          if (error != "0") {
+            var json = {
+              'msg': xmlDoc.getElementsByTagName("des")[0].childNodes[0].nodeValue
+            }
+            reject(json)
+          } else {
 
-          var json = {'refcat': pcat1 + pcat2}
+            var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue
+            var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue
 
-          resolve( json )
+            var json = {'refcat': pcat1 + pcat2}
+
+            resolve( json )
+          }
         }
       )
     }
@@ -102,8 +111,14 @@ export default class CatastroParser {
           var provName = xmlDoc.getElementsByTagName("np")[0].childNodes[0].nodeValue
           var muni = xmlDoc.getElementsByTagName("cm")[0].childNodes[0].nodeValue
           var muniName = xmlDoc.getElementsByTagName("nm")[0].childNodes[0].nodeValue
-          var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue
-
+          try {
+            var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue
+          } catch (error) {
+            var dir = xmlDoc.getElementsByTagName("tv")[0].childNodes[0].nodeValue + " " +
+                      xmlDoc.getElementsByTagName("nv")[0].childNodes[0].nodeValue + " " +
+                      xmlDoc.getElementsByTagName("pnp")[0].childNodes[0].nodeValue
+          }
+          
           var urlAccesoSede = "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?del=" + prov + "&muni=" + muni + "&rc1=" + pc1 + "&rc2=" + pc2
 
           var json = {
@@ -115,8 +130,8 @@ export default class CatastroParser {
             'direccion': dir,
             'urlSede': urlAccesoSede
           }
-
           resolve(json)
+          
         }
       )
     })
@@ -128,7 +143,9 @@ export default class CatastroParser {
         this.getInfoRefCat('', '', '', json.refcat).then((json) => {
           resolve(json)
         })
-      } 
-    )}
+      }).catch((json) => {
+        reject(json)
+      })
+    }
   )}
 }
