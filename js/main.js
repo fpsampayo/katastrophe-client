@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "87e8c6802f5079366c50"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d3346cfef3ba8c89e941"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -764,7 +764,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\n.nav-wrapper {\r\n    z-index: 900;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n    body {\r\n        padding-bottom: 56px;\r\n    }\r\n}\r\n\r\n.side-nav {\r\n    z-index: 9999;\r\n}\r\n\r\n.drag-target {\r\n    z-index: 9998;\r\n}\r\n\r\n#sidenav-overlay {\r\n    z-index: 9997;\r\n}", ""]);
+exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\n.nav-wrapper {\r\n    z-index: 900;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n    body {\r\n        padding-bottom: 56px;\r\n    }\r\n}\r\n\r\n.side-nav {\r\n    z-index: 9999;\r\n}\r\n\r\n.drag-target {\r\n    z-index: 9998;\r\n}\r\n\r\n#sidenav-overlay {\r\n    z-index: 9997;\r\n}\r\n\r\n@media only screen and (min-width: 994px) {\r\n    .modal {\r\n        padding-left: 250px;\r\n    }\r\n}\r\n\r\n#map.wait{\r\n cursor: progress!important;   \r\n}", ""]);
 
 // exports
 
@@ -46468,6 +46468,7 @@ module.exports = g;
 class CatastroParser {
   constructor() {
     this.catParcelUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT=";
+    this.catInfoXYUrl = "https://crossorigin.me/http://ovc.catastro.meh.es//ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?";
   }
 
   getParcel(refcat) {
@@ -46523,6 +46524,26 @@ class CatastroParser {
           }
         };
         resolve(geojsonFeature);
+      });
+    });
+  }
+
+  getInfoXY(srs, x, y) {
+    return new Promise((resolve, reject) => {
+      $.get(this.catInfoXYUrl, {
+        'SRS': srs,
+        'Coordenada_X': x,
+        'Coordenada_Y': y
+      }, function (xmlDoc, status) {
+        var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue;
+        var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue;
+
+        var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue;
+
+        var json = { 'refcat': pcat1 + pcat2,
+          'direccion': dir };
+
+        resolve(json);
       });
     });
   }
@@ -46631,11 +46652,16 @@ $('.datepicker').pickadate({
   selectYears: 15,
   container: document.body,
   onSet: function (e) {
-    var dateString = this.get('select', 'yyyy-mm-dd');
-    map.catastroHistorico(dateString);
-    this.close();
+    /* Comprobamos que lo que setea el pickadate es un fecha */
+    if (e.select) {
+      var dateString = this.get('select', 'yyyy-mm-dd');
+      map.catastroHistorico(dateString);
+      this.close();
+    }
   }
 });
+
+$('.modal').modal();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
@@ -46644,7 +46670,7 @@ $('.datepicker').pickadate({
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__("./node_modules/leaflet/dist/leaflet-src.js");
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__("./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css__ = __webpack_require__("./node_modules/leaflet/dist/leaflet.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_leaflet_dist_leaflet_css__);
@@ -46659,6 +46685,7 @@ $('.datepicker').pickadate({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_leaflet_locatecontrol__ = __webpack_require__("./node_modules/leaflet.locatecontrol/src/L.Control.Locate.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_leaflet_locatecontrol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_leaflet_locatecontrol__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__("./src/constants.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__catastroParser__ = __webpack_require__("./src/catastroParser.js");
 
 
 
@@ -46667,6 +46694,9 @@ $('.datepicker').pickadate({
 
 
 
+
+
+const catastroParser = new __WEBPACK_IMPORTED_MODULE_8__catastroParser__["a" /* default */]();
 
 class Map {
 
@@ -46786,6 +46816,21 @@ class Map {
 
     var locateDiv = document.getElementsByClassName('leaflet-control-locate')[0];
     locateDiv.style.display = 'none';
+
+    this.activaIdentificacion();
+  }
+
+  activaIdentificacion() {
+    this.map.addEventListener('click', e => {
+      $('#map').addClass("wait");
+      catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
+        var html = "<h4>Referencia Catastral: " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
+        $('#modal-content').html(html);
+        $('.modal').modal('open');
+        $('#map').removeClass("wait");
+      });
+      $('#map').removeClass("wait");
+    });
   }
 
   clearHighLight() {
@@ -46822,6 +46867,7 @@ class Map {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Map;
 
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
