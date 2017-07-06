@@ -67,8 +67,8 @@ $('.datepicker').pickadate({
   selectYears: 15, 
   container: document.body, 
   onSet: function(e) {
-    /* Comprobamos que lo que setea el pickadate es un fecha */
-    if (e.select){
+    /* Comprobamos que lo que setea el pickadate es un fecha o clear */
+    if (e.hasOwnProperty("select") || e.hasOwnProperty("clear")){
       var dateString = this.get('select', 'yyyy-mm-dd')
       map.catastroHistorico(dateString)
       this.close()
