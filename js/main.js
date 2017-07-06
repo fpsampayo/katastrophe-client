@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "32ddb713933e4db606c3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f7de2c523542c4c5b4b8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46701,8 +46701,8 @@ $('.datepicker').pickadate({
   selectYears: 15,
   container: document.body,
   onSet: function (e) {
-    /* Comprobamos que lo que setea el pickadate es un fecha */
-    if (e.select) {
+    /* Comprobamos que lo que setea el pickadate es un fecha o clear */
+    if (e.hasOwnProperty("select") || e.hasOwnProperty("clear")) {
       var dateString = this.get('select', 'yyyy-mm-dd');
       map.catastroHistorico(dateString);
       this.close();
