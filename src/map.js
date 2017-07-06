@@ -140,13 +140,21 @@ export default class Map {
     this.activaIdentificacion()
   }
 
+  descargaParcela(refcat) {
+    catastroParser.getParcel(refcat).then((geoJson) => {
+      this.loadGeoJson(geoJson)
+    })
+  }
+
   activaIdentificacion() {
     this.map.addEventListener('click', (e) => {
       $('#map').addClass("wait")
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
-        var html = "<h4>Referencia Catastral: " + json.refcat + "</h4>" +
+        var html_content = "<h4>Referencia Catastral: " + json.refcat + "</h4>" +
                   "<p>" + json.direccion + "</p>"
-        $('#modal-content').html(html)
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn-flat left" target="_blank">Sede Catastro</a>'
+        $('#modal-content').html(html_content)
+        $('#modal-footer').html(html_footer)
         $('.modal').modal('open');
         $('#map').removeClass("wait")
       })
