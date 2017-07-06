@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "78114044b4193e50d37d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "32ddb713933e4db606c3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46536,12 +46536,21 @@ class CatastroParser {
         'Coordenada_X': x,
         'Coordenada_Y': y
       }, function (xmlDoc, status) {
-        var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue;
-        var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue;
+        var error = xmlDoc.getElementsByTagName("cuerr")[0].childNodes[0].nodeValue;
+        if (error != "0") {
+          var json = {
+            'msg': xmlDoc.getElementsByTagName("des")[0].childNodes[0].nodeValue
+          };
+          reject(json);
+        } else {
 
-        var json = { 'refcat': pcat1 + pcat2 };
+          var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue;
+          var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue;
 
-        resolve(json);
+          var json = { 'refcat': pcat1 + pcat2 };
+
+          resolve(json);
+        }
       });
     });
   }
@@ -46560,7 +46569,11 @@ class CatastroParser {
         var provName = xmlDoc.getElementsByTagName("np")[0].childNodes[0].nodeValue;
         var muni = xmlDoc.getElementsByTagName("cm")[0].childNodes[0].nodeValue;
         var muniName = xmlDoc.getElementsByTagName("nm")[0].childNodes[0].nodeValue;
-        var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue;
+        try {
+          var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue;
+        } catch (error) {
+          var dir = xmlDoc.getElementsByTagName("tv")[0].childNodes[0].nodeValue + " " + xmlDoc.getElementsByTagName("nv")[0].childNodes[0].nodeValue + " " + xmlDoc.getElementsByTagName("pnp")[0].childNodes[0].nodeValue;
+        }
 
         var urlAccesoSede = "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?del=" + prov + "&muni=" + muni + "&rc1=" + pc1 + "&rc2=" + pc2;
 
@@ -46573,7 +46586,6 @@ class CatastroParser {
           'direccion': dir,
           'urlSede': urlAccesoSede
         };
-
         resolve(json);
       });
     });
@@ -46585,6 +46597,8 @@ class CatastroParser {
         this.getInfoRefCat('', '', '', json.refcat).then(json => {
           resolve(json);
         });
+      }).catch(json => {
+        reject(json);
       });
     });
   }
@@ -46863,16 +46877,20 @@ class Map {
 
   activaIdentificacion() {
     this.map.addEventListener('click', e => {
-      $('#map').addClass("wait");
+      $('#map').toggleClass("wait");
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
-        var html_content = "<h4>Referencia Catastral: " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
-        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn-flat left" target="_blank">Sede Catastro</a>';
+        var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>';
         $('#modal-content').html(html_content);
         $('#modal-footer').html(html_footer);
         $('.modal').modal('open');
-        $('#map').removeClass("wait");
+        $('#map').toggleClass("wait");
+      }).catch(json => {
+        $('#map').toggleClass("wait");
+        var html_content = "<h4>Error</h4>" + "<p>" + json.msg + "</p>";
+        $('#modal-content').html(html_content);
+        $('.modal').modal('open');
       });
-      $('#map').removeClass("wait");
     });
   }
 
