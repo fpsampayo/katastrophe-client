@@ -72,11 +72,13 @@ $('.datepicker').pickadate({
   selectYears: 15, 
   container: document.body, 
   onSet: function(e) {
-    var dateString = this.get('select', 'yyyy-mm-dd')
-    if (dateString != ''){
-      console.log('fecha' + dateString)
+    /* Comprobamos que lo que setea el pickadate es un fecha */
+    if (e.select){
+      var dateString = this.get('select', 'yyyy-mm-dd')
+      map.catastroHistorico(dateString)
+      this.close()
     }
-    map.catastroHistorico(dateString)
-    //this.close()
   }
 })
+
+$('.modal').modal();
