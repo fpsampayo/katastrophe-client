@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d3346cfef3ba8c89e941"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "78114044b4193e50d37d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46469,6 +46469,7 @@ class CatastroParser {
   constructor() {
     this.catParcelUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT=";
     this.catInfoXYUrl = "https://crossorigin.me/http://ovc.catastro.meh.es//ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?";
+    this.catInfoRefcatUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejeroCodigos.asmx/Consulta_DNPRC_Codigos?";
   }
 
   getParcel(refcat) {
@@ -46528,7 +46529,7 @@ class CatastroParser {
     });
   }
 
-  getInfoXY(srs, x, y) {
+  _getRefCatXY(srs, x, y) {
     return new Promise((resolve, reject) => {
       $.get(this.catInfoXYUrl, {
         'SRS': srs,
@@ -46538,12 +46539,52 @@ class CatastroParser {
         var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue;
         var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue;
 
-        var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue;
-
-        var json = { 'refcat': pcat1 + pcat2,
-          'direccion': dir };
+        var json = { 'refcat': pcat1 + pcat2 };
 
         resolve(json);
+      });
+    });
+  }
+
+  getInfoRefCat(codProv, codMun, codMunIne, refcat) {
+    return new Promise((resolve, reject) => {
+      $.get(this.catInfoRefcatUrl, {
+        'CodigoProvincia': codProv,
+        'CodigoMunicipio': codMun,
+        'CodigoMunicipioINE': codMunIne,
+        'RC': refcat
+      }, function (xmlDoc, status) {
+        var pc1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue;
+        var pc2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue;
+        var prov = xmlDoc.getElementsByTagName("cp")[0].childNodes[0].nodeValue;
+        var provName = xmlDoc.getElementsByTagName("np")[0].childNodes[0].nodeValue;
+        var muni = xmlDoc.getElementsByTagName("cm")[0].childNodes[0].nodeValue;
+        var muniName = xmlDoc.getElementsByTagName("nm")[0].childNodes[0].nodeValue;
+        var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue;
+
+        var urlAccesoSede = "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?del=" + prov + "&muni=" + muni + "&rc1=" + pc1 + "&rc2=" + pc2;
+
+        var json = {
+          'refcat': pc1 + pc2,
+          'provCode': prov,
+          'provName': provName,
+          'muniCode': muni,
+          'muniName': muniName,
+          'direccion': dir,
+          'urlSede': urlAccesoSede
+        };
+
+        resolve(json);
+      });
+    });
+  }
+
+  getInfoXY(srs, x, y) {
+    return new Promise((resolve, reject) => {
+      this._getRefCatXY(srs, x, y).then(json => {
+        this.getInfoRefCat('', '', '', json.refcat).then(json => {
+          resolve(json);
+        });
       });
     });
   }
@@ -46578,8 +46619,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__map__ = __webpack_require__("./src/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_styles_css__ = __webpack_require__("./src/styles/styles.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_styles_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__styles_styles_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__catastroParser__ = __webpack_require__("./src/catastroParser.js");
-
 
 
 
@@ -46591,22 +46630,18 @@ if (true) {
 }
 
 const map = new __WEBPACK_IMPORTED_MODULE_3__map__["a" /* default */]();
-const catastroParser = new __WEBPACK_IMPORTED_MODULE_5__catastroParser__["a" /* default */]();
 
-const imputRefCat = document.getElementById('navRefCatForm');
+const inputRefCat = document.getElementById('navRefCatForm');
 const toolMeasure = document.getElementById('tool-measure');
 const toolLocate = document.getElementById('tool-locate');
 
 const refCatSearch = () => {
-  const refCat = document.getElementById('txt-refcat').value;
-
-  catastroParser.getParcel(refCat).then(geoJson => {
-    map.loadGeoJson(geoJson);
-  });
+  var refcat = document.getElementById('txt-refcat').value;
+  map.descargaParcela(refcat);
 };
 
 /* Previene que al pulsar intro se refresque la web y dispara el evento click */
-imputRefCat.addEventListener('keypress', e => {
+inputRefCat.addEventListener('keypress', e => {
   if (e.which == 13) {
     e.preventDefault();
     refCatSearch();
@@ -46820,12 +46855,20 @@ class Map {
     this.activaIdentificacion();
   }
 
+  descargaParcela(refcat) {
+    catastroParser.getParcel(refcat).then(geoJson => {
+      this.loadGeoJson(geoJson);
+    });
+  }
+
   activaIdentificacion() {
     this.map.addEventListener('click', e => {
       $('#map').addClass("wait");
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
-        var html = "<h4>Referencia Catastral: " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
-        $('#modal-content').html(html);
+        var html_content = "<h4>Referencia Catastral: " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn-flat left" target="_blank">Sede Catastro</a>';
+        $('#modal-content').html(html_content);
+        $('#modal-footer').html(html_footer);
         $('.modal').modal('open');
         $('#map').removeClass("wait");
       });
