@@ -4,6 +4,7 @@ export default class CatastroParser {
   constructor(){
     this.catParcelUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT="
     this.catInfoXYUrl = "https://crossorigin.me/http://ovc.catastro.meh.es//ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?"
+    this.catInfoRefcatUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejeroCodigos.asmx/Consulta_DNPRC_Codigos?"
   }
 
   getParcel(refcat){
@@ -63,7 +64,7 @@ export default class CatastroParser {
     })
   }
 
-  getInfoXY(srs, x, y){
+  _getRefCatXY(srs, x, y){
     return new Promise((resolve, reject) => {
       $.get(
         this.catInfoXYUrl, 
@@ -76,14 +77,58 @@ export default class CatastroParser {
           var pcat1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue
           var pcat2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue
 
-          var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue
-
-          var json = {'refcat': pcat1 + pcat2,
-                      'direccion': dir}
+          var json = {'refcat': pcat1 + pcat2}
 
           resolve( json )
         }
       )
     }
+  )}
+
+  getInfoRefCat(codProv, codMun, codMunIne, refcat) {
+    return new Promise((resolve, reject) => {
+      $.get(
+        this.catInfoRefcatUrl,
+        {
+          'CodigoProvincia': codProv,
+          'CodigoMunicipio': codMun,
+          'CodigoMunicipioINE': codMunIne,
+          'RC': refcat
+        },
+        function(xmlDoc, status){
+          var pc1 = xmlDoc.getElementsByTagName("pc1")[0].childNodes[0].nodeValue
+          var pc2 = xmlDoc.getElementsByTagName("pc2")[0].childNodes[0].nodeValue
+          var prov = xmlDoc.getElementsByTagName("cp")[0].childNodes[0].nodeValue
+          var provName = xmlDoc.getElementsByTagName("np")[0].childNodes[0].nodeValue
+          var muni = xmlDoc.getElementsByTagName("cm")[0].childNodes[0].nodeValue
+          var muniName = xmlDoc.getElementsByTagName("nm")[0].childNodes[0].nodeValue
+          var dir = xmlDoc.getElementsByTagName("ldt")[0].childNodes[0].nodeValue
+
+          var urlAccesoSede = "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?del=" + prov + "&muni=" + muni + "&rc1=" + pc1 + "&rc2=" + pc2
+
+          var json = {
+            'refcat': pc1 + pc2,
+            'provCode': prov,
+            'provName': provName,
+            'muniCode': muni,
+            'muniName': muniName,
+            'direccion': dir,
+            'urlSede': urlAccesoSede
+          }
+
+          resolve(json)
+        }
+      )
+    })
+  }
+
+  getInfoXY(srs, x, y) {
+    return new Promise((resolve, reject) => {
+      this._getRefCatXY(srs, x, y).then((json) => {
+        this.getInfoRefCat('', '', '', json.refcat).then((json) => {
+          resolve(json)
+        })
+      } 
+    )}
   )}
 }
