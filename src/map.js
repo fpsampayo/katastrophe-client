@@ -148,17 +148,22 @@ export default class Map {
 
   activaIdentificacion() {
     this.map.addEventListener('click', (e) => {
-      $('#map').addClass("wait")
+      $('#map').toggleClass("wait")
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
-        var html_content = "<h4>Referencia Catastral: " + json.refcat + "</h4>" +
-                  "<p>" + json.direccion + "</p>"
-        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn-flat left" target="_blank">Sede Catastro</a>'
+        var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" +
+                            "<p>" + json.direccion + "</p>"
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>'
         $('#modal-content').html(html_content)
         $('#modal-footer').html(html_footer)
-        $('.modal').modal('open');
-        $('#map').removeClass("wait")
+        $('.modal').modal('open')
+        $('#map').toggleClass("wait")
+      }).catch((json) => {
+        $('#map').toggleClass("wait")
+        var html_content = "<h4>Error</h4>" +
+                            "<p>" + json.msg + "</p>"
+        $('#modal-content').html(html_content)
+        $('.modal').modal('open')
       })
-      $('#map').removeClass("wait")
     })
   }
 
