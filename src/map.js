@@ -6,6 +6,9 @@ import 'leaflet.nontiledlayer'
 import 'leaflet.gridlayer.googlemutant'
 import 'leaflet.locatecontrol'
 import {MAX_ZOOM} from './constants' 
+import CatastroParser from './catastroParser'
+
+const catastroParser = new CatastroParser()
 
 export default class Map {
 
@@ -133,6 +136,22 @@ export default class Map {
 
     var locateDiv = document.getElementsByClassName('leaflet-control-locate')[0]
     locateDiv.style.display = 'none'
+
+    this.activaIdentificacion()
+  }
+
+  activaIdentificacion() {
+    this.map.addEventListener('click', (e) => {
+      $('#map').addClass("wait")
+      catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
+        var html = "<h4>Referencia Catastral: " + json.refcat + "</h4>" +
+                  "<p>" + json.direccion + "</p>"
+        $('#modal-content').html(html)
+        $('.modal').modal('open');
+        $('#map').removeClass("wait")
+      })
+      $('#map').removeClass("wait")
+    })
   }
 
   clearHighLight() {
