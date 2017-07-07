@@ -60,7 +60,7 @@ input[type="radio"].leaflet-control-layers-selector {
 }
 
 @media only screen and (min-width: 994px) {
-    .modal {
+    #modal1 {
         padding-left: 250px;
     }
 }
