@@ -149,7 +149,7 @@ export default class Map {
   activaIdentificacion() {
     this.map.addEventListener('click', (e) => {
       $('#modal-content').html('<div class="progress light-green darken-1"><div class="indeterminate light-green darken-4"></div></div>')
-      $('.modal').modal('open')
+      $('#modal1').modal('open')
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
         var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" +
                             "<p>" + json.direccion + "</p>"
