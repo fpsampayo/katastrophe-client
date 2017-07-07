@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "852ddf80508fba413ef0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6aaa47406fdd3b541147"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46887,6 +46887,7 @@ class Map {
       }).catch(json => {
         var html_content = "<h4>Error</h4>" + "<p>" + json.msg + "</p>";
         $('#modal-content').html(html_content);
+        $('#modal-footer').empty();
       });
     });
   }
