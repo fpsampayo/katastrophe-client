@@ -6,6 +6,9 @@ import 'leaflet.nontiledlayer'
 import 'leaflet.gridlayer.googlemutant'
 import 'leaflet.locatecontrol'
 import {MAX_ZOOM} from './constants' 
+import CatastroParser from './catastroParser'
+
+const catastroParser = new CatastroParser()
 
 export default class Map {
 
@@ -133,6 +136,32 @@ export default class Map {
 
     var locateDiv = document.getElementsByClassName('leaflet-control-locate')[0]
     locateDiv.style.display = 'none'
+
+    this.activaIdentificacion()
+  }
+
+  descargaParcela(refcat) {
+    catastroParser.getParcel(refcat).then((geoJson) => {
+      this.loadGeoJson(geoJson)
+    })
+  }
+
+  activaIdentificacion() {
+    this.map.addEventListener('click', (e) => {
+      $('#modal-content').html('<div class="progress light-green darken-1"><div class="indeterminate light-green darken-4"></div></div>')
+      $('#modal1').modal('open')
+      catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
+        var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" +
+                            "<p>" + json.direccion + "</p>"
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>'
+        $('#modal-content').html(html_content)
+        $('#modal-footer').html(html_footer)
+      }).catch((json) => {
+        var html_content = "<h4>Error</h4>" +
+                            "<p>" + json.msg + "</p>"
+        $('#modal-content').html(html_content)
+      })
+    })
   }
 
   clearHighLight() {

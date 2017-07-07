@@ -58,3 +58,13 @@ input[type="radio"].leaflet-control-layers-selector {
 #sidenav-overlay {
     z-index: 9997;
 }
+
+@media only screen and (min-width: 994px) {
+    .modal {
+        padding-left: 250px;
+    }
+}
+
+#map.wait{
+ cursor: progress!important;   
+}

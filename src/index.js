@@ -3,7 +3,6 @@ import 'materialize-css'
 import '../node_modules/materialize-css/dist/css/materialize.css'
 import Map from './map'
 import './styles/styles.css'
-import CatastroParser from './catastroParser'
 
 
 if (module.hot) {
@@ -11,22 +10,18 @@ if (module.hot) {
 }
 
 const map = new Map()
-const catastroParser = new CatastroParser()
 
-const imputRefCat = document.getElementById('navRefCatForm')
+const inputRefCat = document.getElementById('navRefCatForm')
 const toolMeasure = document.getElementById('tool-measure')
 const toolLocate = document.getElementById('tool-locate')
 
 const refCatSearch = () => {
-  const refCat = document.getElementById('txt-refcat').value
-  
-  catastroParser.getParcel(refCat).then((geoJson) => {
-    map.loadGeoJson(geoJson)
-  })
+  var refcat = document.getElementById('txt-refcat').value
+  map.descargaParcela(refcat)
 }
 
 /* Previene que al pulsar intro se refresque la web y dispara el evento click */
-imputRefCat.addEventListener('keypress', (e) => {
+inputRefCat.addEventListener('keypress', (e) => {
   if (e.which == 13) {
     e.preventDefault()
     refCatSearch()
@@ -72,11 +67,13 @@ $('.datepicker').pickadate({
   selectYears: 15, 
   container: document.body, 
   onSet: function(e) {
-    var dateString = this.get('select', 'yyyy-mm-dd')
-    if (dateString != ''){
-      console.log('fecha' + dateString)
+    /* Comprobamos que lo que setea el pickadate es un fecha o clear */
+    if (e.hasOwnProperty("select") || e.hasOwnProperty("clear")){
+      var dateString = this.get('select', 'yyyy-mm-dd')
+      map.catastroHistorico(dateString)
+      this.close()
     }
-    map.catastroHistorico(dateString)
-    //this.close()
   }
 })
+
+$('.modal').modal();
