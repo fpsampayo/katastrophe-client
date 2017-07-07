@@ -160,6 +160,7 @@ export default class Map {
         var html_content = "<h4>Error</h4>" +
                             "<p>" + json.msg + "</p>"
         $('#modal-content').html(html_content)
+        $('#modal-footer').empty()
       })
     })
   }
