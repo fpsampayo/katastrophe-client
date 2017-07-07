@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f7de2c523542c4c5b4b8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "852ddf80508fba413ef0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -764,7 +764,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\n.nav-wrapper {\r\n    z-index: 900;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n    body {\r\n        padding-bottom: 56px;\r\n    }\r\n}\r\n\r\n.side-nav {\r\n    z-index: 9999;\r\n}\r\n\r\n.drag-target {\r\n    z-index: 9998;\r\n}\r\n\r\n#sidenav-overlay {\r\n    z-index: 9997;\r\n}\r\n\r\n@media only screen and (min-width: 994px) {\r\n    .modal {\r\n        padding-left: 250px;\r\n    }\r\n}\r\n\r\n#map.wait{\r\n cursor: progress!important;   \r\n}", ""]);
+exports.push([module.i, "\r\nbody {\r\n    padding: 0;\r\n    margin: 0;\r\n    padding-bottom: 64px;\r\n}\r\n\r\n#map-wrapper{\r\n    width: 100%;\r\n    height:100%;\r\n}\r\n\r\nhtml, body, #map {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.leaflet-control-layers{\r\n    padding: 0px!important;\r\n    border-radius: 0px!important;\r\n    box-shadow: none!important;\r\n}\r\n\r\n#panel-capas{\r\n  padding-left: 20px;\r\n}\r\n\r\ninput[type=\"checkbox\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\ninput[type=\"radio\"].leaflet-control-layers-selector {\r\n  position: inherit;\r\n  left: inherit;\r\n  opacity: inherit;\r\n}\r\n\r\n.nav-wrapper {\r\n    z-index: 900;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n    body {\r\n        padding-bottom: 56px;\r\n    }\r\n}\r\n\r\n.side-nav {\r\n    z-index: 9999;\r\n}\r\n\r\n.drag-target {\r\n    z-index: 9998;\r\n}\r\n\r\n#sidenav-overlay {\r\n    z-index: 9997;\r\n}\r\n\r\n@media only screen and (min-width: 994px) {\r\n    #modal1 {\r\n        padding-left: 250px;\r\n    }\r\n}\r\n\r\n#map.wait{\r\n cursor: progress!important;   \r\n}", ""]);
 
 // exports
 
@@ -46877,19 +46877,16 @@ class Map {
 
   activaIdentificacion() {
     this.map.addEventListener('click', e => {
-      $('#map').toggleClass("wait");
+      $('#modal-content').html('<div class="progress light-green darken-1"><div class="indeterminate light-green darken-4"></div></div>');
+      $('#modal1').modal('open');
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
         var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
         var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>';
         $('#modal-content').html(html_content);
         $('#modal-footer').html(html_footer);
-        $('.modal').modal('open');
-        $('#map').toggleClass("wait");
       }).catch(json => {
-        $('#map').toggleClass("wait");
         var html_content = "<h4>Error</h4>" + "<p>" + json.msg + "</p>";
         $('#modal-content').html(html_content);
-        $('.modal').modal('open');
       });
     });
   }

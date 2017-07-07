@@ -31,6 +31,9 @@
                     <ul id="nav-mobile" class="left">
                         <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a></li>
                     </ul>
+                    <ul id="nav-mobile" class="right">
+                        <li><a class="" href="#modal-about"><i class="material-icons">info</i></a></li>
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -121,6 +124,41 @@
                 
                 </div>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green red btn">Cerrar</a>
+            </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal-about" class="modal">
+            <div class="modal-content">
+                <h4>Visor Catastral</h4>
+                <p>Este visor permite consultar la cartografía catastral tanto actual como histórica sobre los vuelos del PNOA y Google.</p>
+                <p>Ha sido desarrollado por <a target="_blank" href="https://twitter.com/fpsampayo">@fpsampayo</a> y puedes consultar y descargar el código desde <a target="_blank" href="https://github.com/fpsampayo/webpack-leaflet">GitHub</a></p>
+                <h5>Funcionalidades:</h5>
+                <ul class="browser-default">
+                    <li>Catastro Histórico</li>
+                    <li>Localización</li>
+                    <li>Búsqueda de Referencia Catastral con resalado de geometría</li>
+                    <li>Información clicando en el mapa</li>
+                    <li>Medición</li>
+                </ul>
+                <h5>Problemas:</h5>
+                <p>Debido al certificado SSL usado por catastro, 
+                    puede que en determinados dispositivos no se 
+                    vea la cartografía catastral.
+                </p>
+                <p>
+                    Esto se debe a que para tu navegador el 
+                    certificado usado por Catastro no es seguro.
+                </p>
+                <p>
+                    Si tienes este problema, de momento la solución es que 
+                    entres en el siguiente enlace y añadas excepción de seguridad.
+                    Se trata de un enlace a una porción de cartografía catastral:
+                    <a class="truncate" target="_blank" href="https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=&service=WMS&request=GetMap&version=1.1.1&layers=Catastro&styles=&format=image%2Fjpg&transparent=true&srs=EPSG%3A3857&width=1920&height=950&bbox=-1099011.5926842643,5131064.834727311,-805493.4040691875,5276295.188469148" >https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=&service=WMS&request=GetMap&version=1.1.1&layers=Catastro&styles=&format=image%2Fjpg&transparent=true&srs=EPSG%3A3857&width=1920&height=950&bbox=-1099011.5926842643,5131064.834727311,-805493.4040691875,5276295.188469148</a>
+                    </p>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn light-green darken-2">Cerrar</a>
             </div>
         </div>
     </div>
