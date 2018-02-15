@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6aaa47406fdd3b541147"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "def12b857151bddda0a7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46467,9 +46467,9 @@ module.exports = g;
 
 class CatastroParser {
   constructor() {
-    this.catParcelUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT=";
-    this.catInfoXYUrl = "https://crossorigin.me/http://ovc.catastro.meh.es//ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?";
-    this.catInfoRefcatUrl = "https://crossorigin.me/http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejeroCodigos.asmx/Consulta_DNPRC_Codigos?";
+    this.catParcelUrl = "https://catastroproxy.herokuapp.com/INSPIRE/wfsCP.aspx?service=wfs&version=2&request=getfeature&STOREDQUERIE_ID=GetParcel&srsname=EPSG:4326&REFCAT=";
+    this.catInfoXYUrl = "https://catastroproxy.herokuapp.com/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?";
+    this.catInfoRefcatUrl = "https://catastroproxy.herokuapp.com/ovcservweb/OVCSWLocalizacionRC/OVCCallejeroCodigos.asmx/Consulta_DNPRC_Codigos?";
   }
 
   getParcel(refcat) {
@@ -46881,9 +46881,14 @@ class Map {
       $('#modal1').modal('open');
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
         var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" + "<p>" + json.direccion + "</p>";
-        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>';
+        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>' + '<a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2 left">Sede Catastro</a>';
         $('#modal-content').html(html_content);
         $('#modal-footer').html(html_footer);
+
+        let btnDescarga = document.getElementById('btn-descarga');
+        btnDescarga.addEventListener('click', e => {
+          this.descargaParcela(json.refcat);
+        });
       }).catch(json => {
         var html_content = "<h4>Error</h4>" + "<p>" + json.msg + "</p>";
         $('#modal-content').html(html_content);
