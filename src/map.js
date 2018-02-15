@@ -148,18 +148,40 @@ export default class Map {
 
   activaIdentificacion() {
     this.map.addEventListener('click', (e) => {
-      $('#modal-content').html('<div class="progress light-green darken-1"><div class="indeterminate light-green darken-4"></div></div>')
+      let modalContent = document.getElementById('modal-content')
+      let modalFooter = document.getElementById('modal-footer')
+      modalContent.innerHTML = `
+        <div class="progress light-green darken-1">
+          <div class="indeterminate light-green darken-4"></div>
+        </div>
+      `
+      modalFooter.innerHTML = null
+      //$('#modal-content').html('<div class="progress light-green darken-1"><div class="indeterminate light-green darken-4"></div></div>')
+      //$('#modal-footer').empty()
       $('#modal1').modal('open')
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
-        var html_content = "<h4><small>Referencia Catastral:</small> " + json.refcat + "</h4>" +
-                            "<p>" + json.direccion + "</p>"
-        var html_footer = '<a href="' + json.urlSede + '" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>'
-        $('#modal-content').html(html_content)
-        $('#modal-footer').html(html_footer)
+        var html_content = `
+          <h4><small>Referencia Catastral:</small> ` + json.refcat + `</h4>
+          <p>` + /*json.direccion +*/ `</p>
+        `
+        var html_footer = `
+          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>
+          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2 left">Resaltar</a>
+        `
+        modalContent.innerHTML = html_content
+        modalFooter.innerHTML = html_footer
+
+        let btnDescarga = document.getElementById('btn-descarga')
+        btnDescarga.addEventListener('click', (e) => {
+          this.descargaParcela(json.refcat)
+        })
       }).catch((json) => {
-        var html_content = "<h4>Error</h4>" +
-                            "<p>" + json.msg + "</p>"
-        $('#modal-content').html(html_content)
+        var html_content = `
+          <h4>Error</h4>
+          <p>` + json.msg + `</p>
+        `
+        modalContent.innerHTML = html_content
+        modalFooter.innerHTML = null
       })
     })
   }
