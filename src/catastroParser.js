@@ -74,16 +74,12 @@ export default class CatastroParser {
           'y': y
         },
         function(response, status){
-          if (status != "success") {
-            var json = {
-              'msg': response.message
-            }
-            reject(json)
-          } else {
-            resolve( response )
-          }
+          resolve( response )
         }
       )
+      .fail(function( response ) {
+        reject(response.responseJSON)
+      })
     }
   )}
 
