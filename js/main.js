@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "987d34532ae7bd6ddfae"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "502b0024e843ca2a8708"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46536,14 +46536,9 @@ class CatastroParser {
         'x': x,
         'y': y
       }, function (response, status) {
-        if (status != "success") {
-          var json = {
-            'msg': response.message
-          };
-          reject(json);
-        } else {
-          resolve(response);
-        }
+        resolve(response);
+      }).fail(function (response) {
+        reject(response.responseJSON);
       });
     });
   }
@@ -46884,11 +46879,11 @@ class Map {
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then(json => {
         var html_content = `
           <h4><small>Referencia Catastral:</small> ` + json.refcat + `</h4>
-          <p>` + /*json.direccion +*/`</p>
+          <p>` + json.direccion + `</p>
         `;
         var html_footer = `
-          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>
-          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2 left">Resaltar</a>
+          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2" target="_blank">Sede Catastro</a>
+          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2">Resaltar</a>
         `;
         modalContent.innerHTML = html_content;
         modalFooter.innerHTML = html_footer;
@@ -46900,7 +46895,7 @@ class Map {
       }).catch(json => {
         var html_content = `
           <h4>Error</h4>
-          <p>` + json.msg + `</p>
+          <p>` + json.message + `</p>
         `;
         modalContent.innerHTML = html_content;
         modalFooter.innerHTML = null;
