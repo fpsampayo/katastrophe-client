@@ -165,8 +165,8 @@ export default class Map {
           <p>` + /*json.direccion +*/ `</p>
         `
         var html_footer = `
-          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>
-          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2 left">Resaltar</a>
+          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2" target="_blank">Sede Catastro</a>
+          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2">Resaltar</a>
         `
         modalContent.innerHTML = html_content
         modalFooter.innerHTML = html_footer
