@@ -162,11 +162,11 @@ export default class Map {
       catastroParser.getInfoXY('EPSG:4326', e.latlng.lng, e.latlng.lat).then((json) => {
         var html_content = `
           <h4><small>Referencia Catastral:</small> ` + json.refcat + `</h4>
-          <p>` + /*json.direccion +*/ `</p>
+          <p>` + json.direccion + `</p>
         `
         var html_footer = `
-          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2 left" target="_blank">Sede Catastro</a>
-          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2 left">Resaltar</a>
+          <a href="` + json.accesoSede + `" class="modal-action waves-effect waves-green btn light-green darken-2" target="_blank">Sede Catastro</a>
+          <a href="#" id="btn-descarga" class="modal-action waves-effect waves-green btn light-indigo darken-2">Resaltar</a>
         `
         modalContent.innerHTML = html_content
         modalFooter.innerHTML = html_footer
@@ -178,7 +178,7 @@ export default class Map {
       }).catch((json) => {
         var html_content = `
           <h4>Error</h4>
-          <p>` + json.msg + `</p>
+          <p>` + json.message + `</p>
         `
         modalContent.innerHTML = html_content
         modalFooter.innerHTML = null
