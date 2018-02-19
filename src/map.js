@@ -50,7 +50,7 @@ export default class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     })
 
-    this.catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME='
+    this.catastroUrl = 'http://katastrophe.herokuapp.com/wms?TIME='
 
     this.catastroBase = L.nonTiledLayer.wms(
       this.catastroUrl, 
