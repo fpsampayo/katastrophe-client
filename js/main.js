@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "502b0024e843ca2a8708"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cee2dc38b9b14a087311"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46775,7 +46775,7 @@ class Map {
       type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     });
 
-    this.catastroUrl = 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?TIME=';
+    this.catastroUrl = 'http://katastrophe.herokuapp.com/wms?TIME=';
 
     this.catastroBase = __WEBPACK_IMPORTED_MODULE_0_leaflet___default.a.nonTiledLayer.wms(this.catastroUrl, {
       maxZoom: __WEBPACK_IMPORTED_MODULE_7__constants__["a" /* MAX_ZOOM */],
